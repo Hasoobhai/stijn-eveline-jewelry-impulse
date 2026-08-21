@@ -1,0 +1,122 @@
+{% style %}
+#u-back-to-top {
+  bottom: {{ section.settings.bottom_offset }}px;
+  width: {{ section.settings.button_size }}px;
+  height: {{ section.settings.button_size }}px;
+  background: {{ section.settings.button_bg }};
+  border-radius:{{ section.settings.brdrRadius }}px;
+}
+#u-back-to-top.uvisible{
+  right: {{ section.settings.right_offset }}px;
+  transition:all 1s ease;  
+}
+#u-back-to-top {
+  right: {{ section.settings.right_offset }}px;
+}
+.u-back-to-top-icon-image {
+  width: {{ section.settings.icon_size }}px;
+}
+.u-back-to-top-icon svg {
+  width: {{ section.settings.icon_size }}px;
+  height: {{ section.settings.icon_size }}px;
+  display: block;
+}
+@media(max-width:769px){
+  #u-back-to-top {
+    bottom: {{ section.settings.mbottom_offset }}px;
+  }
+}
+{% endstyle %}
+
+<div id="u-back-to-top" class="u-back-to-top">
+  <div class="u-btp-wrapper u-color-btn">  
+  {% if section.settings.icon_image != blank %}
+    <img src="{{ section.settings.icon_image | img_url: '100x100' }}" class="u-back-to-top-icon-image" alt="Back to top">
+  {% else %}
+    <!-- Fallback SVG -->
+    <span class="u-back-to-top-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none" width="{{ section.settings.icon_size }}" height="{{ section.settings.icon_size }}">
+        <path d="M2.8125 9H15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M10.125 3.9375L15.1875 9L10.125 14.0625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </span>
+  {% endif %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "U Back to Top Button",
+  "settings": [
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button Background Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "Button Size (px)",
+      "min": 30,
+      "max": 80,
+      "step": 1,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "bottom_offset",
+      "label": "Bottom Offset (px)",
+      "min": 10,
+      "max": 200,
+      "step": 2,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mbottom_offset",
+      "label": "Mobile Bottom Offset (px)",
+      "min": 10,
+      "max": 200,
+      "step": 2,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "right_offset",
+      "label": "Right Offset (px)",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "brdrRadius",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Button Icon Image"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon Size (px)",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "U Back to Top Button",
+    }
+  ]
+}
+{% endschema %}

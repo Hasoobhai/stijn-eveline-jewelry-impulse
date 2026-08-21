@@ -1,0 +1,195 @@
+{% style %}
+  .u-collapsible--{{ section.id }} .u-collaps-sheading{
+    font-size:{{section.settings.sub-heading-fontsize}}px;
+  }
+  .u-collapsible--{{ section.id }} .u-collap-headign p{
+    font-size:{{section.settings.heading-fontsize}}px;
+    text-align:center;
+  }
+  @media(max-width:769px){
+    .u-collapsible--{{ section.id }} .u-collap-headign p{
+      font-size:{{section.settings.mobileheading-fontsize}}px;
+    }
+  }
+  .u-collapsible--{{ section.id }} .collapsible-btn{
+    font-size:{{section.settings.title-size}}px;
+  }
+  .u-collapsible--{{ section.id }} .contentuz p{
+    font-size:{{section.settings.contentsize}}px;
+  }
+  @media(min-width:769px){
+    .u-collapsible--{{ section.id }}{
+        width:{{ section.settings.dsectionwidth }}%;
+        margin:0 auto;
+    }
+  }
+  .u-collapsible--{{ section.id }} .u-faq-content{
+    border-bottom:1px solid {{ section.settings.bdrtop }}
+  } 
+  .u-collapsible--{{ section.id }} .u-new-faq-wrapper .u-faq-content:first-child {
+    border-top: 1px solid {{ section.settings.bdrtop }};
+  }
+  .u-collapsible--{{ section.id }} .ufaq-content a {
+    color: #4F5A3A;
+    text-decoration: underline;
+  }
+{% endstyle %}
+<section
+  class="u-collapsible--{{ section.id }}"
+  style="padding:{{ section.settings.mtop }}px 0 {{ section.settings.mbottom }}px 0; background:{{ section.settings.select-bg }};"
+>
+  <div class="page-width page-width--narrow container">
+    <h5 class="u-collaps-sheading">{{ section.settings.stitle }}</h5>
+    <div class="u-collap-headign">
+      {{ section.settings.title }}
+    </div>
+    <div class="u-new-faq-wrapper">
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'u-collapsible' %}
+                {% if block.settings.coll_btn1 != blank %}
+                    <div class="cstm-collapsible-content u-faq-content">
+                        <div class="containeruz collapsibleuz ufaq-collapsibleuz">
+                            <h2 class="collapsible-btn">{{ block.settings.coll_btn1 }}</h2>
+                            <div class="plusminus"></div>
+                        </div>
+                    <div class="contentuz ufaq-content">
+                        {{ block.settings.coll_content1 }}
+                    </div>
+                    </div>
+                {% endif %}
+            {% endcase %}
+        {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "U New FAQ'S",
+  "settings": [
+    {
+        "type":"color",
+        "label":"Select Background Color",
+        "id":"select-bg",
+        "default":"#fff"
+    },
+    {
+        "type":"color",
+        "label":"Border Color",
+        "id":"bdrtop",
+        "default":"#000"
+    },
+    {
+        "type": "inline_richtext",
+        "default":"Need Help?",
+        "id": "stitle",
+        "label": "Need Help?"
+    },
+    {
+        "type": "richtext",
+        "default":"<p>Enter Heading Here</p>",
+        "id": "title",
+        "label": "Enter Main Heading Here"
+    },
+    {
+        "type": "range",
+        "id": "mtop",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Space Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "mbottom",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Space Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "sub-heading-fontsize",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Sub Heading Font Size",
+        "default": 16
+    },
+    {
+        "type": "range",
+        "id": "heading-fontsize",
+        "min": 10,
+        "max": 60,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading Font Size",
+        "default": 30
+    },
+    {
+        "type": "range",
+        "id": "mobileheading-fontsize",
+        "min": 10,
+        "max": 60,
+        "step": 1,
+        "unit": "px",
+        "label": "Mobile Heading Font Size",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "title-size",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Title Font Size",
+        "default": 18
+    },
+    {
+        "type": "range",
+        "id": "contentsize",
+        "min": 10,
+        "max": 60,
+        "step": 1,
+        "unit": "px",
+        "label": "Content Font Size",
+        "default": 14
+    },
+  ],
+  "blocks":[
+    {
+      "type":"u-collapsible",
+      "name":"FAQ Box",
+      "settings":[
+        {
+          "type": "header",
+          "content": "Collapsible-Content"
+        },
+        {
+          "type":"text",
+          "id":"coll_btn1",
+          "label":"First Button Text",
+          "default":"Title"
+        },
+        {
+          "type":"richtext",
+          "id":"coll_content1",
+          "label":"Enter Content",
+          "default":"<p>Text Here</p>"
+        }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name":"U New FAQ'S"
+    }
+  ]
+}
+{% endschema %}

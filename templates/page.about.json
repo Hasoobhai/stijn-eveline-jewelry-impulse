@@ -1,0 +1,70 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "1766064285162f233c": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_dbdd239_daUrwy": {
+          "type": "ai_gen_block_dbdd239",
+          "settings": {
+            "company_title": "Informations sur l'entreprise",
+            "company_content": "<p>Maison Valmont est exploité par A&amp;M Commerce V.O.F., société immatriculée sous le numéro 77110617.</p><p><strong>Adresse :</strong> Westeind 139, 3351 AN Papendrecht, Pays-Bas</p>",
+            "company_bg_color": "#ffffff",
+            "contact_title": "Nous contacter",
+            "contact_content": "<p>Besoin d'aide ? Notre équipe est à votre disposition.</p><p><strong>Email : </strong><a href=\"mailto:contact@maisonvalmontparis.fr\" title=\"contact@maisonvalmontparis.fr\">contact@maisonvalmontparis.fr</a></p><p><strong>Téléphone : </strong><a href=\"tel:+31644538622\" title=\"+31 0644538622\">+31 0644538622</a></p><p><strong>Formulaire de contact : </strong>disponible sur notre page <a href=\"/pages/contact\" title=\"Contact\">Contact</a></p><p><strong>Horaires du service client : </strong>du lundi au vendredi, 9h00–17h00</p>",
+            "contact_bg_color": "#ffffff",
+            "text_color": "#000000",
+            "link_color": "#4F5A3A",
+            "icon_color": "#4F5A3A",
+            "icon_size": 60,
+            "title_size": 24,
+            "content_size": 16,
+            "box_padding": 40,
+            "border_radius": 16,
+            "gap": 30
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_c6840f8_maq37h": {
+          "type": "ai_gen_block_c6840f8",
+          "settings": {
+            "box_1_title": "Nos débuts",
+            "box_1_text": "<p>Maison Valmont est née d'une conviction simple : l'élégance ne devrait jamais être une question de genre. Nous créons des vestiaires pour femmes et pour hommes autour des mêmes principes, inspirés par l'élégance discrète du sud de la France.</p>",
+            "box_1_image": "shopify://shop_images/hf_20260601_224439_66308c0b-681a-4895-8f63-4184e15c69ec.png",
+            "box_2_title": "Notre équipe",
+            "box_2_text": "<p>Notre équipe sélectionne chaque pièce avec la même exigence : une coupe qui flatte sans forcer, une matière agréable au quotidien, une finition soignée.</p>",
+            "box_2_image": "shopify://shop_images/hf_20260601_224442_af717bfa-6b16-49bb-85cb-6cac51465d79.png",
+            "box_3_title": "Pourquoi en ligne",
+            "box_3_text": "<p>Maison Valmont a fait le choix du digital pour vous offrir une expérience d'achat à votre rythme, avec des collections mises à jour régulièrement.</p>",
+            "box_3_image": "shopify://shop_images/hf_20260601_224444_4def1ea6-7c26-4166-a210-28669d98b749.png",
+            "box_background_color": "#ffffff",
+            "box_border_radius": 12,
+            "title_size": 28,
+            "title_color": "#1C1710",
+            "text_size": 16,
+            "text_color": "#1C1710",
+            "border_width": 2,
+            "border_color_1": "#4F5A3A",
+            "border_color_2": "#4F5A3A",
+            "border_offset": 8,
+            "image_border_radius": 12,
+            "image_hover_scale": "1.05"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_dbdd239_daUrwy",
+        "ai_gen_block_c6840f8_maq37h"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "1766064285162f233c"
+  ]
+}

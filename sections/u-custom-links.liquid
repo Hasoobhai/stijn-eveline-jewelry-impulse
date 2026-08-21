@@ -1,0 +1,201 @@
+{% style %}
+  .u-industry-tile--{{ section.id }}{
+    padding-top:{{section.settings.padt}}px;
+    padding-bottom:{{section.settings.padb}}px;
+    background:{{ section.settings.sec-bg }};
+  }
+  .u-heading--{{ section.id }}{
+    font-size:{{ section.settings.heading-size }}px;
+    margin-bottom:{{section.settings.heading-space}}px;
+    text-align:center;
+  }
+  .u-industry-tile--{{ section.id }} .u-industry-tile-text span:hover{
+    background:{{section.settings.btn-hoverbg}};
+  }
+  .u-industry-tile--{{ section.id }} h4{
+    font-size:{{section.settings.title-size}}px;
+  }
+  .u-industry-tile--{{ section.id }} .u-industry-tile-box{
+    height:{{ section.settings.desktopsize }}rem;
+  }
+  @media(max-width:769px){
+    .u-industry-tile--{{ section.id }} h4{
+      font-size:{{section.settings.mtitle-size}}px;
+    }
+    .u-industry-tile--{{ section.id }} .u-industry-tile-box{
+        height:{{ section.settings.mobilesize }}rem;
+    }
+  }
+{% endstyle %}
+<section class="u-industry-tile--{{ section.id }}">
+  <div class="page-width">
+    <div class="u-industry-tile-header">
+      {% if section.settings.heading != blank %}
+        <h2 class="u-heading--{{ section.id }}">{{ section.settings.heading }}</h2>
+      {% endif %}
+    </div>
+    <div class="u-indutry-tile-content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'u-collection' %}
+            <div class="u-industry-tile-box">
+              <a class="u-collection-btn" href="{{ block.settings.btn-url }}">
+                <div class="u-industry-tile-image">
+                  {% if block.settings.image != blank %}
+                    <img src="{{ block.settings.image | image_url }}" width="100%" height="auto">
+                  {% endif %}
+                </div>
+                <div class="u-industry-tile-text">
+                  <h4 class="u-btn">{{ block.settings.title }}</h4>
+                </div>
+              </a>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "U Custom Links",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padt",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Space Top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padb",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Space Top",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "default":"#fff",
+      "id": "sec-bg",
+      "label": "Background Color"
+    },
+    {
+      "type": "inline_richtext",
+      "label": "Heading",
+      "id": "heading",
+      "default":"Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading-size",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "heading-space",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Space Bottom",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "header",
+      "content": "Text Settings"
+    },
+    {
+      "type": "range",
+      "id": "desktopsize",
+      "min": 5,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Desktop Image",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mobilesize",
+      "min": 5,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Mobile Image Size",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "title-size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Size",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "mtitle-size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Title Size",
+      "default": 28
+    },
+  ],
+  "blocks": [
+    {
+      "type": "u-collection",
+      "name":"Column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Upload Image"
+        },
+        {
+          "type": "inline_richtext",
+          "default":"Title",
+          "id": "title",
+          "label": "Enter Title Here"
+        },
+        {
+          "type": "url",
+          "id": "btn-url",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "U Custom Links",
+      "blocks": [
+        {
+          "type": "u-collection"
+        },
+        {
+          "type": "u-collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

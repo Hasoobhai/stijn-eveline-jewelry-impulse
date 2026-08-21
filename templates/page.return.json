@@ -1,0 +1,151 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "1766067053c0aaa9a9": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_a4b5374_fec684": {
+          "type": "ai_gen_block_a4b5374",
+          "settings": {
+            "intro_bg_color": "#ffffff",
+            "intro_text_color": "#1C1710",
+            "intro_highlight_color": "#4F5A3A",
+            "intro_text_size": 16,
+            "box_bg_color": "#ffffff",
+            "border_color": "#4F5A3A",
+            "border_width": 2,
+            "border_radius": 12,
+            "icon_color": "#4F5A3A",
+            "icon_size": 50,
+            "title_color": "#4F5A3A",
+            "title_size": 18,
+            "text_color": "#1C1710",
+            "text_size": 14,
+            "link_color": "#4F5A3A",
+            "link_hover_color": "#1C1710"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_c97448c_BeU6r6": {
+          "type": "ai_gen_block_c97448c",
+          "settings": {
+            "show_icon_1": true,
+            "box_1_title": "Annulation de commande",
+            "box_1_content": "<p>Pour annuler une commande, contactez-nous rapidement à <a href=\"mailto:contact@maisonvalmontparis.fr\" title=\"contact@maisonvalmontparis.fr\">contact@maisonvalmontparis.fr</a>. Nous répondons sous 24 heures ouvrées. L'annulation n'est possible que si la commande n'est pas encore en cours de traitement.</p>",
+            "show_icon_2": true,
+            "box_2_title": "Articles endommagés ou incorrects",
+            "box_2_content": "<p>Si vous recevez un article endommagé ou incorrect, écrivez-nous à <a href=\"mailto:contact@maisonvalmontparis.fr\" title=\"contact@maisonvalmontparis.fr\">contact@maisonvalmontparis.fr</a> en indiquant :</p><ul><li>Votre numéro de commande</li><li>Une brève description du problème</li><li>Des photos de l'article et de son emballage</li></ul><p>Après vérification, un <strong>remplacement</strong> ou un <strong>remboursement complet</strong> vous sera proposé.</p>",
+            "box_background": "#ffffff",
+            "box_padding": 35,
+            "border_width": 1,
+            "border_color": "#4F5A3A",
+            "border_radius": 12,
+            "accent_color": "#4F5A3A",
+            "accent_height": 4,
+            "icon_size": 60,
+            "icon_background": "#f5f5f5",
+            "icon_color": "#4F5A3A",
+            "title_size": 22,
+            "title_color": "#4F5A3A",
+            "text_size": 16,
+            "text_color": "#1C1710",
+            "link_color": "#4F5A3A",
+            "link_hover_color": "#1C1710",
+            "shadow_horizontal": 0,
+            "shadow_vertical": 4,
+            "shadow_blur": 15,
+            "shadow_color": "#00000014"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_662747f_BrgK9L": {
+          "type": "ai_gen_block_662747f",
+          "settings": {
+            "box_1_heading": "Conditions de retour",
+            "box_1_content": "<p>Les articles peuvent être retournés dans les 30 jours suivant la livraison. Passé ce délai, aucun retour ne pourra être accepté. Les articles retournés doivent respecter les conditions suivantes :</p><ul><li>L'article doit être non porté et non lavé</li><li>Il doit rester dans son emballage d'origine</li><li>Toutes les étiquettes doivent être attachées</li></ul>",
+            "box_1_bg_color": "#ffffff",
+            "box_1_bg_gradient": "#4F5A3A",
+            "box_1_text_color": "#1C1710",
+            "box_1_border_color": "#4F5A3A",
+            "box_1_link_color": "#4F5A3A",
+            "box_2_heading": "Retourner un article",
+            "box_2_content": "<ol><li>Contactez <a href=\"mailto:contact@maisonvalmontparis.fr\" title=\"contact@maisonvalmontparis.fr\">contact@maisonvalmontparis.fr</a> en indiquant votre numéro de commande et le motif du retour.</li><li>Attendez notre validation avant de renvoyer l'article.</li><li>Suivez les instructions fournies pour l'emballage et l'adresse de retour.</li><li>Emballez soigneusement l'article pour éviter tout dommage pendant le transport.</li></ol>",
+            "box_2_bg_color": "#ffffff",
+            "box_2_bg_gradient": "#4F5A3A",
+            "box_2_text_color": "#1C1710",
+            "box_2_border_color": "#4F5A3A",
+            "box_2_link_color": "#4F5A3A",
+            "box_spacing": 30,
+            "box_padding": 35,
+            "box_border_radius": 12,
+            "box_border_width": 1,
+            "heading_size": 24,
+            "text_size": 16
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_a4b5374_fec684",
+        "ai_gen_block_c97448c_BeU6r6",
+        "ai_gen_block_662747f_BrgK9L"
+      ],
+      "settings": {}
+    },
+    "176613162680ede4d5": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_6a1772c_9Xbm44": {
+          "type": "ai_gen_block_6a1772c",
+          "settings": {
+            "refunds_title": "Remboursements",
+            "refunds_content": "<p><strong>Remboursements</strong></p><ul><li>Vous recevrez une confirmation par e-mail dès réception et validation de votre retour.</li><li>Les remboursements sont émis sur le moyen de paiement d'origine sous 10 jours ouvrés après validation.</li><li>Les prestataires de paiement ou banques peuvent nécessiter un délai supplémentaire avant de libérer les fonds.</li></ul><p><strong>À noter</strong><br/>Les frais de retour restent à la charge du client pour les articles non défectueux. Emballez soigneusement les articles pour éviter tout dommage pendant le transport.</p>",
+            "exchange_title": "Échanger un article",
+            "exchange_content": "<p>Pour demander un échange, contactez notre équipe avec les détails de votre commande dans les 30 jours suivant la livraison :</p><p><strong>1. Faites votre demande : </strong>Écrivez à <a href=\"mailto:contact@maisonvalmontparis.fr\" title=\"contact@maisonvalmontparis.fr\">contact@maisonvalmontparis.fr</a> avec votre numéro de commande et l'article à échanger.</p><p><strong>2. Conditions : </strong></p><ul><li>L'article doit être non porté et non lavé</li><li>Il doit rester dans son emballage d'origine</li><li>Toutes les étiquettes doivent être attachées</li></ul><p><strong>3. Étapes suivantes : </strong>Après vérification, vous recevrez les instructions pour retourner l'article initial et obtenir son remplacement.</p>",
+            "box_background": "#ffffff",
+            "border_color": "#4F5A3A",
+            "border_width": 2,
+            "border_radius": 20,
+            "icon_size": 70,
+            "icon_spacing": 20,
+            "icon_background": "#f0f5f0",
+            "icon_color": "#4F5A3A",
+            "icon_hover_background": "#4F5A3A",
+            "icon_hover_color": "#ffffff",
+            "icon_rotation": 15,
+            "icon_hover_scale": 115,
+            "title_size": 24,
+            "title_color": "#1C1710",
+            "title_hover_color": "#4F5A3A",
+            "text_size": 15,
+            "text_color": "#1C1710",
+            "heading_color": "#1C1710",
+            "link_color": "#4F5A3A",
+            "link_hover_color": "#1C1710",
+            "hover_lift": 8,
+            "hover_scale": 102,
+            "hover_border_color": "#4F5A3A",
+            "hover_overlay_color": "#ffffff",
+            "hover_overlay_opacity": 20,
+            "hover_shadow_y": 15,
+            "hover_shadow_blur": 30,
+            "hover_shadow_opacity": 15
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_6a1772c_9Xbm44"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "1766067053c0aaa9a9",
+    "176613162680ede4d5"
+  ]
+}

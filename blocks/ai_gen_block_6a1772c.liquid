@@ -1,0 +1,513 @@
+{% doc %}
+  @prompt
+    <p><strong>Refunds</strong></p>
+    <ul>
+    <li>You will receive email confirmation once the return is received and approved.</li>
+    <li>Refunds are issued to the original payment method within 7 days after approval.</li>
+    <li>Payment providers or banks can require extra time before releasing funds.<br></li>
+    </ul>
+    <p><strong>Additional Notes</strong><br>Customers are responsible for return shipping on items that are not defective. Ensure items are packaged securely to avoid damage during transit.</p>
+    <p><strong>Exchanging an Item</strong><br>To request an exchange, contact our support team with your order details within 30 days of delivery. The process includes:</p>
+    <ol>
+    <li><strong>Submit Your Request:</strong> Email <a href="mailto:info@trevinae.com" title="info@trevinae.com">info@trevinae.com</a> with your <strong>order number</strong> and the item to be exchanged.</li>
+    <li><strong>Requirements:</strong>
+    <ul>
+    <li>The item must be unused and unwashed</li>
+    <li>Remain in its original packaging</li>
+    <li>All tags must be attached</li>
+    </ul>
+    </li>
+    <li><strong>Next Steps:</strong> After review, you will receive instructions for returning the original item and obtaining the replacement.</li>
+    </ol>
+    
+    customize those in 2 boxes next each other with a cute and creative way and use movement when hovering and colors and borders
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-policy-boxes-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .ai-policy-boxes__container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-policy-box-{{ ai_gen_id }} {
+    position: relative;
+    background: {{ block.settings.box_background }};
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: 40px 30px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+  }
+
+  .ai-policy-box-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, {{ block.settings.hover_overlay_color }}, transparent);
+    opacity: {{ block.settings.hover_overlay_opacity | divided_by: 100.0 }};
+    transition: left 0.6s ease;
+  }
+
+  .ai-policy-box-{{ ai_gen_id }}:hover::before {
+    left: 100%;
+  }
+
+  .ai-policy-box-{{ ai_gen_id }}:hover {
+    transform: translateY(-{{ block.settings.hover_lift }}px) scale({{ block.settings.hover_scale | divided_by: 100.0 }});
+    box-shadow: 0 {{ block.settings.hover_shadow_y }}px {{ block.settings.hover_shadow_blur }}px rgba(0, 0, 0, {{ block.settings.hover_shadow_opacity | divided_by: 100.0 }});
+    border-color: {{ block.settings.hover_border_color }};
+  }
+
+  .ai-policy-box__icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    margin: 0 auto {{ block.settings.icon_spacing }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: {{ block.settings.icon_background }};
+    border-radius: 50%;
+    transition: all 0.4s ease;
+  }
+
+  .ai-policy-box-{{ ai_gen_id }}:hover .ai-policy-box__icon-{{ ai_gen_id }} {
+    transform: rotate({{ block.settings.icon_rotation }}deg) scale({{ block.settings.icon_hover_scale | divided_by: 100.0 }});
+    background: {{ block.settings.icon_hover_background }};
+  }
+
+  .ai-policy-box__icon-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    stroke: {{ block.settings.icon_color }};
+    transition: stroke 0.4s ease;
+  }
+
+  .ai-policy-box-{{ ai_gen_id }}:hover .ai-policy-box__icon-{{ ai_gen_id }} svg {
+    stroke: {{ block.settings.icon_hover_color }};
+  }
+
+  .ai-policy-box__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 20px;
+    text-align: center;
+    transition: color 0.3s ease;
+  }
+
+  .ai-policy-box-{{ ai_gen_id }}:hover .ai-policy-box__title-{{ ai_gen_id }} {
+    color: {{ block.settings.title_hover_color }};
+  }
+
+  .ai-policy-box__content-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 1;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.6;
+  }
+
+  .ai-policy-box__content-{{ ai_gen_id }} p {
+    margin: 0 0 15px;
+  }
+
+  .ai-policy-box__content-{{ ai_gen_id }} strong {
+    color: {{ block.settings.heading_color }};
+    font-weight: 700;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .ai-policy-box__content-{{ ai_gen_id }} ul,
+  .ai-policy-box__content-{{ ai_gen_id }} ol {
+    margin: 10px 0 15px 20px;
+    padding: 0;
+  }
+
+  .ai-policy-box__content-{{ ai_gen_id }} li {
+    margin-bottom: 8px;
+  }
+
+  .ai-policy-box__content-{{ ai_gen_id }} a {
+    color: {{ block.settings.link_color }};
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+
+  .ai-policy-box__content-{{ ai_gen_id }} a:hover {
+    color: {{ block.settings.link_hover_color }};
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-policy-boxes__container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .ai-policy-box-{{ ai_gen_id }} {
+      padding: 30px 20px;
+    }
+
+    .ai-policy-box__title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size | times: 0.85 }}px;
+    }
+
+    .ai-policy-box__content-{{ ai_gen_id }} {
+      font-size: {{ block.settings.text_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<policy-boxes-{{ ai_gen_id }} class="ai-policy-boxes-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-policy-boxes__container-{{ ai_gen_id }}">
+    <div class="ai-policy-box-{{ ai_gen_id }} ai-policy-box--refunds-{{ ai_gen_id }}">
+      <div class="ai-policy-box__icon-{{ ai_gen_id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+      </div>
+      <h3 class="ai-policy-box__title-{{ ai_gen_id }}">{{ block.settings.refunds_title }}</h3>
+      <div class="ai-policy-box__content-{{ ai_gen_id }}">
+        {{ block.settings.refunds_content }}
+      </div>
+    </div>
+
+    <div class="ai-policy-box-{{ ai_gen_id }} ai-policy-box--exchange-{{ ai_gen_id }}">
+      <div class="ai-policy-box__icon-{{ ai_gen_id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="23 4 23 10 17 10"></polyline>
+          <polyline points="1 20 1 14 7 14"></polyline>
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+        </svg>
+      </div>
+      <h3 class="ai-policy-box__title-{{ ai_gen_id }}">{{ block.settings.exchange_title }}</h3>
+      <div class="ai-policy-box__content-{{ ai_gen_id }}">
+        {{ block.settings.exchange_content }}
+      </div>
+    </div>
+  </div>
+</policy-boxes-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class PolicyBoxes{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.boxes = this.querySelectorAll('.ai-policy-box-{{ ai_gen_id }}');
+        this.setupAccessibility();
+      }
+
+      setupAccessibility() {
+        this.boxes.forEach((box) => {
+          box.setAttribute('role', 'article');
+          box.setAttribute('tabindex', '0');
+        });
+      }
+    }
+
+    customElements.define('policy-boxes-{{ ai_gen_id }}', PolicyBoxes{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Policy boxes",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Refunds box"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "refunds_title",
+      "label": "Title",
+      "default": "Refunds"
+    },
+    {
+      "type": "richtext",
+      "id": "refunds_content",
+      "label": "Content",
+      "default": "<p><strong>Refunds</strong></p><ul><li>You will receive email confirmation once the return is received and approved.</li><li>Refunds are issued to the original payment method within 7 days after approval.</li><li>Payment providers or banks can require extra time before releasing funds.</li></ul><p><strong>Additional Notes</strong><br>Customers are responsible for return shipping on items that are not defective. Ensure items are packaged securely to avoid damage during transit.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Exchange box"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "exchange_title",
+      "label": "Title",
+      "default": "Exchanging an Item"
+    },
+    {
+      "type": "richtext",
+      "id": "exchange_content",
+      "label": "Content",
+      "default": "<p>To request an exchange, contact our support team with your order details within 30 days of delivery. The process includes:</p><ol><li><strong>Submit Your Request:</strong> Email info@trevinae.com with your <strong>order number</strong> and the item to be exchanged.</li><li><strong>Requirements:</strong><ul><li>The item must be unused and unwashed</li><li>Remain in its original packaging</li><li>All tags must be attached</li></ul></li><li><strong>Next Steps:</strong> After review, you will receive instructions for returning the original item and obtaining the replacement.</li></ol>"
+    },
+    {
+      "type": "header",
+      "content": "Box style"
+    },
+    {
+      "type": "color",
+      "id": "box_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e8e8e1"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Icon"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Size",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "icon_spacing",
+      "label": "Spacing below",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "icon_background",
+      "label": "Background",
+      "default": "#f0f9f9"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "color",
+      "id": "icon_hover_background",
+      "label": "Hover background",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "color",
+      "id": "icon_hover_color",
+      "label": "Hover icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "icon_rotation",
+      "label": "Hover rotation",
+      "min": 0,
+      "max": 360,
+      "step": 15,
+      "unit": "deg",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "icon_hover_scale",
+      "label": "Hover scale",
+      "min": 100,
+      "max": 130,
+      "step": 5,
+      "unit": "%",
+      "default": 115
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#321004"
+    },
+    {
+      "type": "color",
+      "id": "title_hover_color",
+      "label": "Title hover color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Subheading color",
+      "default": "#321004"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover color",
+      "default": "#d74a5d"
+    },
+    {
+      "type": "header",
+      "content": "Hover effects"
+    },
+    {
+      "type": "range",
+      "id": "hover_lift",
+      "label": "Lift distance",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "hover_scale",
+      "label": "Scale",
+      "min": 100,
+      "max": 110,
+      "step": 1,
+      "unit": "%",
+      "default": 102
+    },
+    {
+      "type": "color",
+      "id": "hover_border_color",
+      "label": "Border color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "color",
+      "id": "hover_overlay_color",
+      "label": "Shimmer color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "hover_overlay_opacity",
+      "label": "Shimmer opacity",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "hover_shadow_y",
+      "label": "Shadow vertical offset",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "hover_shadow_blur",
+      "label": "Shadow blur",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "hover_shadow_opacity",
+      "label": "Shadow opacity",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "%",
+      "default": 15
+    }
+  ],
+  "presets": [
+    {
+      "name": "Policy boxes"
+    }
+  ]
+}
+{% endschema %}

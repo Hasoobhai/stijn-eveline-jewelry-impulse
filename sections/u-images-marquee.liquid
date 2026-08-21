@@ -1,0 +1,324 @@
+{% style %}
+
+  .u-{{ section.id }} .u-marquee-item {
+    margin: 0 {{ section.settings.imageSpace }}px;
+  }
+  .u-{{ section.id }} .u-marquee-item img {
+    min-width: {{ section.settings.imageWidth }}px;
+    height: {{ section.settings.imageHeight }}px;
+  }
+  .u-{{ section.id }} .u-marquee-container {
+    animation: track {{ section.settings.textSpeed }}s linear infinite;
+  }
+  .u-{{ section.id }} .u-marque-content{
+    background:{{section.settings.contentbg-Clr}};
+  }
+  .u-{{ section.id }} .u-marque-content{
+    bottom:{{section.settings.contentposition}}px;
+  }
+  .u-marquee-footer--{{ section.id }}{
+    background:{{ section.settings.footerbgClr }};
+    padding:{{section.settings.ptb}}px {{ section.settings.plr}}px;
+    bottom:{{ section.settings.boxposition }}px;
+    border-radius:{{ section.settings.roundconrerns }}px;
+  }
+  @media(min-width:769px){
+    .u-marquee-footer--{{ section.id }}{
+        width:{{ section.settings.desktopboxwidth }}%;
+    }
+  }
+  .u-marquee-footer--{{ section.id }} *{
+    font-size:{{ section.settings.fontsz }}px;
+  }
+  @media(max-width:769px){
+    .u-{{ section.id }} .u-marquee-item img {
+      min-width: {{ section.settings.mimageWidth }}px;
+      height: {{ section.settings.mimageHeight }}px;
+    }
+    .u-{{ section.id }} .u-marque-content{
+      bottom:{{section.settings.mcontentposition}}px;
+    }
+    .u-section-heading--{{ section.id }}{
+        font-size:{{ section.settings.mheadingsize }}px!important;
+    }
+  }
+{% endstyle %}
+
+{% if section.settings.enable == true %}
+  <div
+    class="u-marquee-wrapper-section u-{{ section.id }}"
+    id="u-marquee"
+    style="background: {{ section.settings.bgClr }}; padding:{{ section.settings.spacetop }}px 0 {{ section.settings.spacebottom }}px 0"
+  >
+    <div class="u-marque-container">
+      <h2 class="u-section-heading--{{ section.id }}" style="text-align:center; font-size:{{ section.settings.headingsize }}px; margin-bottom:{{ section.settings.headingsb }}px">{{ section.settings.section_heading }}</h2>
+      <div class="u-marquee-containerWrapper">
+        {% for i in (1..10) %}
+          <div class="u-marquee-container">
+            <div class="u-marquee-content">
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'customer_photo' %}
+                    <div class="u-marquee-item">
+                      {% if block.settings.customer_image != blank %}
+                        <img
+                          src="{{ block.settings.customer_image | image_url}}"
+                          alt="Customer Photo"
+                          width="100%"
+                          height="auto"
+                        >
+                      {% endif %}
+                    </div>
+                {% endcase %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if section.settings.text != blank %}
+        <div class="u-marquee-footer u-marquee-footer--{{ section.id }}">
+            <div>
+                {{ section.settings.text }}
+            </div>
+        </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "U Images Slider",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Enable Marquee",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "label":"Enter Heading",
+      "id":"section_heading",
+      "default":"Enter Heading"
+    },
+    {
+      "type": "range",
+      "id": "headingsize",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mheadingsize",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Heading Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "headingsb",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Space Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "textSpeed",
+      "min": 10,
+      "max": 200,
+      "step": 2,
+      "unit": "sec",
+      "label": "Animation Speed",
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "bgClr",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "imageSpace",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Space Between Images",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "imageWidth",
+      "min": 100,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Desktop Image Width",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "imageHeight",
+      "min": 100,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Desktop Image Height",
+      "default": 200
+    },
+     {
+      "type": "range",
+      "id": "mimageWidth",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Mobile Image Width",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "mimageHeight",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Mobile Image Height",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "spacetop",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Space Top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "spacebottom",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Space Bottom",
+      "default": 20
+    },
+    {
+        "type":"header",
+        "content": "Section Footer"
+    },
+    {
+        "type":"richtext",
+        "default":"<p>Enter Text Here</p>",
+        "id":"text",
+        "label": "Enter Text Here"
+    },
+    {
+      "type": "color",
+      "id": "footerbgClr",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "roundconrerns",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "label": "Round Corners",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "fontsz",
+      "min": 5,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "desktopboxwidth",
+      "min": 10,
+      "max": 90,
+      "step": 1,
+      "unit": "%",
+      "label": "Desktop Box Width",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "ptb",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Inner Space Bottom Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "plr",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Inner Space Left Right",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "boxposition",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge Position",
+      "default": 20
+    },
+  ],
+  "blocks": [
+    {
+      "type": "customer_photo",
+      "name": "Customer Photo",
+      "settings":[
+        {
+          "type": "image_picker",
+          "id": "customer_image",
+          "label": "Upload Customer Image"
+        }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name":"U Images Slider",
+      "blocks": [
+        {"type": "customer_photo"},
+        {"type": "customer_photo"},
+        {"type": "customer_photo"},
+        {"type": "customer_photo"},
+        {"type": "customer_photo"}
+      ]
+    }
+  ]
+}
+{% endschema %}

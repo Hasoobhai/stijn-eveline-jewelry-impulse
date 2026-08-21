@@ -1,0 +1,84 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection-header": {
+      "type": "collection-header",
+      "custom_css": [
+        "h1.section-header__title {background-color: #2fb4ae; padding: 25px; color: #ffff;}"
+      ],
+      "settings": {
+        "enable": false,
+        "collection_image_enable": false,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "enable_collection_count": true,
+            "per_row": 4,
+            "rows_per_page": 7,
+            "mobile_flush_grid": true
+          }
+        }
+      },
+      "block_order": [
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": false,
+        "collapsed": false,
+        "filter_style": "sidebar",
+        "enable_color_swatches": true,
+        "enable_swatch_labels": true,
+        "enable_sort": true
+      }
+    },
+    "u_custom_featured_collection_Etz7kj": {
+      "type": "u-custom-featured-collection",
+      "disabled": true,
+      "name": "U Featured Collections",
+      "settings": {
+        "collection": "femme",
+        "products_limit": 8,
+        "padt": 20,
+        "padb": 20,
+        "sec-bg": "#fff",
+        "heading": "Featured Collection",
+        "heading-size": 20,
+        "mheading-size": 20,
+        "heading-space": 10,
+        "img-size": "portrait",
+        "badge": "",
+        "showbadge": true,
+        "badge_color": "#4a0000",
+        "badgebg": "#ffffff",
+        "paddingtb": 2,
+        "paddinglr": 8,
+        "badgebdr": 5,
+        "top": 10,
+        "left": 10,
+        "regularpriocecolor": "#000",
+        "salepriocecolor": "#000",
+        "viewall": ""
+      }
+    }
+  },
+  "order": [
+    "collection-header",
+    "main-collection",
+    "u_custom_featured_collection_Etz7kj"
+  ]
+}

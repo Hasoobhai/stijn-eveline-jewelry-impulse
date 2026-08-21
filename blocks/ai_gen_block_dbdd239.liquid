@@ -1,0 +1,356 @@
+{% doc %}
+  @prompt
+    <p>Trevinae is owned and operated by Yano Ecom, a company registered in the Netherlands.</p>
+    <p><strong>Registration Number:</strong> 95697446</p>
+    <p><strong>Address:</strong> Jan Voermanstraat 100, 2, 1061 XK Amsterdam, Netherlands</p>
+    <p>Need guidance? You can rely on us for straightforward assistance.</p>
+    <p><strong>Email: </strong><a href="mailto:info@trevinae.com" title="info@trevinae.com">info@trevinae.com</a><strong><br>Phone Number: </strong><a href="tel:+31616165091" title="+31616165091">+31616165091</a><strong><br>Contact Form: </strong>Available on our <a href="/pages/contact-us" title="Contact Us">Contact Us</a> page</p>
+    <p><strong>Customer Service Hours: </strong>Monday to Friday, 09:00-17:00 GMT</p>
+    generate those 2 in two pbpxes next each other with colors and icons and movement ans something unique
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-company-info-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  .ai-company-info-container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ block.settings.gap }}px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-company-info-container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .ai-company-info-box-{{ ai_gen_id }} {
+    position: relative;
+    padding: {{ block.settings.box_padding }}px;
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-company-info-box-{{ ai_gen_id }}:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .ai-company-info-box-{{ ai_gen_id }}--company {
+    background: linear-gradient(135deg, {{ block.settings.company_bg_color }} 0%, {{ block.settings.company_bg_color | color_darken: 10 }} 100%);
+  }
+
+  .ai-company-info-box-{{ ai_gen_id }}--contact {
+    background: linear-gradient(135deg, {{ block.settings.contact_bg_color }} 0%, {{ block.settings.contact_bg_color | color_darken: 10 }} 100%);
+  }
+
+  .ai-company-info-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .ai-company-info-icon-{{ ai_gen_id }} svg {
+    width: calc({{ block.settings.icon_size }}px * 0.6);
+    height: calc({{ block.settings.icon_size }}px * 0.6);
+    stroke: {{ block.settings.icon_color }};
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .ai-company-info-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+  }
+
+  .ai-company-info-content-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.content_size }}px;
+    line-height: 1.6;
+  }
+
+  .ai-company-info-content-{{ ai_gen_id }} p {
+    margin: 0 0 12px 0;
+  }
+
+  .ai-company-info-content-{{ ai_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-company-info-content-{{ ai_gen_id }} strong {
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 4px;
+  }
+
+  .ai-company-info-content-{{ ai_gen_id }} a {
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .ai-company-info-content-{{ ai_gen_id }} a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  .ai-company-info-decorative-{{ ai_gen_id }} {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+
+  .ai-company-info-decorative-{{ ai_gen_id }}--1 {
+    top: -50px;
+    right: -50px;
+  }
+
+  .ai-company-info-decorative-{{ ai_gen_id }}--2 {
+    bottom: -30px;
+    left: -30px;
+    width: 100px;
+    height: 100px;
+  }
+{% endstyle %}
+
+<company-info-{{ ai_gen_id }} class="ai-company-info-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-company-info-container-{{ ai_gen_id }}">
+    <div class="ai-company-info-box-{{ ai_gen_id }} ai-company-info-box-{{ ai_gen_id }}--company">
+      <div class="ai-company-info-decorative-{{ ai_gen_id }} ai-company-info-decorative-{{ ai_gen_id }}--1"></div>
+      <div class="ai-company-info-decorative-{{ ai_gen_id }} ai-company-info-decorative-{{ ai_gen_id }}--2"></div>
+      
+      <div class="ai-company-info-icon-{{ ai_gen_id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </div>
+
+      <h3 class="ai-company-info-title-{{ ai_gen_id }}">{{ block.settings.company_title }}</h3>
+      
+      <div class="ai-company-info-content-{{ ai_gen_id }}">
+        {{ block.settings.company_content }}
+      </div>
+    </div>
+
+    <div class="ai-company-info-box-{{ ai_gen_id }} ai-company-info-box-{{ ai_gen_id }}--contact">
+      <div class="ai-company-info-decorative-{{ ai_gen_id }} ai-company-info-decorative-{{ ai_gen_id }}--1"></div>
+      <div class="ai-company-info-decorative-{{ ai_gen_id }} ai-company-info-decorative-{{ ai_gen_id }}--2"></div>
+      
+      <div class="ai-company-info-icon-{{ ai_gen_id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </div>
+
+      <h3 class="ai-company-info-title-{{ ai_gen_id }}">{{ block.settings.contact_title }}</h3>
+      
+      <div class="ai-company-info-content-{{ ai_gen_id }}">
+        {{ block.settings.contact_content }}
+      </div>
+    </div>
+  </div>
+</company-info-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CompanyInfo{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupParallax();
+      }
+
+      setupParallax() {
+        const boxes = this.querySelectorAll('.ai-company-info-box-{{ ai_gen_id }}');
+        
+        boxes.forEach((box) => {
+          box.addEventListener('mousemove', (e) => {
+            const rect = box.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            box.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+          });
+          
+          box.addEventListener('mouseleave', () => {
+            box.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+          });
+        });
+      }
+    }
+
+    customElements.define('company-info-{{ ai_gen_id }}', CompanyInfo{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Company info boxes",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Company information"
+    },
+    {
+      "type": "text",
+      "id": "company_title",
+      "label": "Company title",
+      "default": "Company Information"
+    },
+    {
+      "type": "richtext",
+      "id": "company_content",
+      "label": "Company content",
+      "default": "<p>Trevinae is owned and operated by Yano Ecom, a company registered in the Netherlands.</p><p><strong>Registration Number:</strong> 95697446</p><p><strong>Address:</strong> Jan Voermanstraat 100, 2, 1061 XK Amsterdam, Netherlands</p>"
+    },
+    {
+      "type": "color",
+      "id": "company_bg_color",
+      "label": "Company background color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "header",
+      "content": "Contact information"
+    },
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Contact title",
+      "default": "Get In Touch"
+    },
+    {
+      "type": "richtext",
+      "id": "contact_content",
+      "label": "Contact content",
+      "default": "<p>Need guidance? You can rely on us for straightforward assistance.</p><p><strong>Email: </strong><a href=\"mailto:info@trevinae.com\">info@trevinae.com</a></p><p><strong>Phone Number: </strong><a href=\"tel:+31616165091\">+31616165091</a></p><p><strong>Contact Form: </strong>Available on our <a href=\"/pages/contact-us\">Contact Us</a> page</p><p><strong>Customer Service Hours: </strong>Monday to Friday, 09:00-17:00 GMT</p>"
+    },
+    {
+      "type": "color",
+      "id": "contact_bg_color",
+      "label": "Contact background color",
+      "default": "#d74a5d"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 18,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "content_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Content size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "box_padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Box padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap between boxes",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Company info boxes"
+    }
+  ]
+}
+{% endschema %}

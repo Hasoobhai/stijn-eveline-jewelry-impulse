@@ -1,0 +1,374 @@
+{% doc %}
+  @prompt
+    <p>At Trevinae we aim to make <strong>returns, refunds, exchanges, order cancellations</strong> more clear. If a purchase does not meet your needs, please follow the guidelines below.</p>
+    <ul>
+    <li><strong>Return Period:</strong> Items can be returned within 30 days of delivery.</li>
+    <li><strong>Restocking Fees:</strong> None applied.</li>
+    <li><strong>Refund Timing:</strong> Refunds are processed within 7 days after approval.</li>
+    <li><strong>Return Shipping:</strong> Customers are responsible for shipping costs on returns.</li>
+    <li><strong>Exchanges:</strong> Accepted under specified conditions.</li>
+    <li><strong>Reference:</strong> All returns follow our <a href="/pages/terms-of-service" title="Terms of Service">Terms of Service</a>.</li>
+    </ul>
+    
+    customize this 
+    the text in a box and below 6 boxes for the bullets 3 on each line and use matches icons and borders and colors and make them move in a way cute when hovering but dont change anuy word
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-return-policy-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .ai-return-policy-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-return-policy-intro-{{ ai_gen_id }} {
+    background-color: {{ block.settings.intro_bg_color }};
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .ai-return-policy-intro-{{ ai_gen_id }} p {
+    margin: 0;
+    color: {{ block.settings.intro_text_color }};
+    font-size: {{ block.settings.intro_text_size }}px;
+    line-height: 1.6;
+  }
+
+  .ai-return-policy-intro-{{ ai_gen_id }} strong {
+    color: {{ block.settings.intro_highlight_color }};
+  }
+
+  .ai-return-policy-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-return-policy-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .ai-return-policy-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .ai-return-policy-item-{{ ai_gen_id }} {
+    background-color: {{ block.settings.box_bg_color }};
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-return-policy-item-{{ ai_gen_id }}:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-return-policy-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-return-policy-icon-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    stroke: {{ block.settings.icon_color }};
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .ai-return-policy-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 8px;
+  }
+
+  .ai-return-policy-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.text_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .ai-return-policy-text-{{ ai_gen_id }} a {
+    color: {{ block.settings.link_color }};
+    text-decoration: underline;
+  }
+
+  .ai-return-policy-text-{{ ai_gen_id }} a:hover {
+    color: {{ block.settings.link_hover_color }};
+  }
+{% endstyle %}
+
+<return-policy-{{ ai_gen_id }} class="ai-return-policy-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-return-policy-container-{{ ai_gen_id }}">
+    <div class="ai-return-policy-intro-{{ ai_gen_id }}">
+      <p>At Trevinae we aim to make <strong>returns, refunds, exchanges, order cancellations</strong> more clear. If a purchase does not meet your needs, please follow the guidelines below.</p>
+    </div>
+
+    <div class="ai-return-policy-grid-{{ ai_gen_id }}">
+      <div class="ai-return-policy-item-{{ ai_gen_id }}">
+        <div class="ai-return-policy-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <h3 class="ai-return-policy-title-{{ ai_gen_id }}">Return Period:</h3>
+        <p class="ai-return-policy-text-{{ ai_gen_id }}">Items can be returned within 30 days of delivery.</p>
+      </div>
+
+      <div class="ai-return-policy-item-{{ ai_gen_id }}">
+        <div class="ai-return-policy-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <h3 class="ai-return-policy-title-{{ ai_gen_id }}">Restocking Fees:</h3>
+        <p class="ai-return-policy-text-{{ ai_gen_id }}">None applied.</p>
+      </div>
+
+      <div class="ai-return-policy-item-{{ ai_gen_id }}">
+        <div class="ai-return-policy-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <h3 class="ai-return-policy-title-{{ ai_gen_id }}">Refund Timing:</h3>
+        <p class="ai-return-policy-text-{{ ai_gen_id }}">Refunds are processed within 7 days after approval.</p>
+      </div>
+
+      <div class="ai-return-policy-item-{{ ai_gen_id }}">
+        <div class="ai-return-policy-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+        </div>
+        <h3 class="ai-return-policy-title-{{ ai_gen_id }}">Return Shipping:</h3>
+        <p class="ai-return-policy-text-{{ ai_gen_id }}">Customers are responsible for shipping costs on returns.</p>
+      </div>
+
+      <div class="ai-return-policy-item-{{ ai_gen_id }}">
+        <div class="ai-return-policy-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <polyline points="1 20 1 14 7 14"></polyline>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+          </svg>
+        </div>
+        <h3 class="ai-return-policy-title-{{ ai_gen_id }}">Exchanges:</h3>
+        <p class="ai-return-policy-text-{{ ai_gen_id }}">Accepted under specified conditions.</p>
+      </div>
+
+      <div class="ai-return-policy-item-{{ ai_gen_id }}">
+        <div class="ai-return-policy-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <h3 class="ai-return-policy-title-{{ ai_gen_id }}">Reference:</h3>
+        <p class="ai-return-policy-text-{{ ai_gen_id }}">All returns follow our <a href="/pages/terms-of-service" title="Terms of Service">Terms of Service</a>.</p>
+      </div>
+    </div>
+  </div>
+</return-policy-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ReturnPolicy{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('return-policy-{{ ai_gen_id }}', ReturnPolicy{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Return policy",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Introduction box"
+    },
+    {
+      "type": "color",
+      "id": "intro_bg_color",
+      "label": "Background color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "intro_text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "intro_highlight_color",
+      "label": "Highlight color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "range",
+      "id": "intro_text_size",
+      "label": "Text size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Policy boxes"
+    },
+    {
+      "type": "color",
+      "id": "box_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e8e8e1"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Icons"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover color",
+      "default": "#1f8a85"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Return policy"
+    }
+  ]
+}
+{% endschema %}

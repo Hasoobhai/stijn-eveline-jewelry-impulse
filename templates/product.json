@@ -1,0 +1,381 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "utitle_jfn37t": {
+          "type": "utitle",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "regularpricesize": 13,
+            "salespricesize": 20,
+            "regularpricecolor": "#666666",
+            "salespricecolor": "#4f5a3a",
+            "regularpricebold": false,
+            "salespricebold": true,
+            "singlepricesize": 20,
+            "singlepricecolor": "#000000",
+            "singlepricebold": false,
+            "badge-text": "Réduit -",
+            "badge-bg": "#4f5a3a",
+            "textclr": "#ffffff",
+            "u-badge-font-size": 12,
+            "u-badge-bottom": 0,
+            "borderradius": 5,
+            "innerspacetb": 5,
+            "innerspacelr": 10
+          }
+        },
+        "custom_uspIcons01": {
+          "type": "custom",
+          "settings": {
+            "code": "<div style=\"display:flex;flex-direction:column;gap:8px;margin:4px 0 22px;color:#000000;\">\n  <div style=\"display:flex;align-items:center;gap:10px;\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" width=\"18\" height=\"18\" style=\"flex-shrink:0;\" aria-hidden=\"true\"><path d=\"m44.36 67.09-2.17.01h20.46V28.83H22.27v3.93m0 23.71V67.1h8.78l-2.18-.01\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M36.62 59.5a5.83 5.83 0 0 0-5.84 5.83 5.84 5.84 0 0 0 11.68 0 5.84 5.84 0 0 0-5.84-5.83m41.38 0a5.84 5.84 0 0 0-5.85 5.83 5.84 5.84 0 0 0 11.68 0A5.83 5.83 0 0 0 78 59.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"m70.26 67.09 2.17.01h-9.78V34.03h12.31l15.06 15.06h4.67V67.1H83.57l2.18-.01\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M66.95 49.1V38h5.49l11.04 11.03zm-38.69-4.57H5.31m27.5-6.72h-15.3m15.3 13.44h-15.3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/></svg>\n    <span style=\"font-size:13px;\">Livraison offerte</span>\n  </div>\n  <div style=\"display:flex;align-items:center;gap:10px;\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" width=\"18\" height=\"18\" style=\"flex-shrink:0;\" aria-hidden=\"true\"><path d=\"M24 63.72h17.6v17.64h-6a12.87 12.87 0 0 1-11.57-7.24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M24 63.72v.07a9.82 9.82 0 0 0-1.2 4.71 12.73 12.73 0 0 0 1.27 5.58l-10.21-20-.62-1.22a9.59 9.59 0 0 1-.58-2 9.27 9.27 0 0 1 1-6.12l2.51-4.58-3.36-1.81 8.07-1.55 8.07-1.54 3.12 7.59 3.13 7.6-3-1.62Zm25-44.44-8 15.66-15.72-8 2.7-5.3a12.87 12.87 0 0 1 11.7-7h.05\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M49 19.28v-.07A9.78 9.78 0 0 0 45.32 16a12.78 12.78 0 0 0-5.55-1.4h23.82a9.77 9.77 0 0 1 2 .38 9.24 9.24 0 0 1 5 3.66l2.94 4.31 3.14-2.17-2.27 7.87-2.29 7.9-8.18-.67-8.19-.66 2.8-1.94ZM76 63.5 67.6 48l15.53-8.38L86 44.89a12.86 12.86 0 0 1-.87 13.62\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M76 63.5a9.82 9.82 0 0 0 4.71-1.18 12.78 12.78 0 0 0 4.3-3.77L72.31 77l-.78 1.12a9 9 0 0 1-1.45 1.44 9.27 9.27 0 0 1-5.85 2L59 81.6v3.82l-5.2-6.36-5.2-6.37 5.21-6.35L59 60v3.41Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/></svg>\n    <span style=\"font-size:13px;\">Paiement sécurisé</span>\n  </div>\n</div>"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "product_dynamic_variants_enable": false,
+            "color_swatches": false
+          }
+        },
+        "quantity_selector_jwBPEM": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "surface_pickup_enable": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "tab_YRPxr6": {
+          "type": "tab",
+          "settings": {
+            "title": "Retours sous 30 jours",
+            "content": "<p>Les articles peuvent être retournés dans les 30 jours suivant la livraison. Passé ce délai, aucun retour ne pourra être accepté.</p><p>Pour plus d'informations, consultez notre <a href=\"/pages/politique-de-retour-et-remboursement\">politique de retour et remboursement</a>.</p>",
+            "page": "",
+            "tabiconsize": 20
+          }
+        },
+        "tab_zEArqB": {
+          "type": "tab",
+          "settings": {
+            "title": "Livraison offerte et suivie",
+            "content": "<p>Toutes nos commandes bénéficient de la <strong>livraison offerte avec un numéro de suivi</strong>, afin que vous puissiez suivre votre colis à chaque étape. Vous recevrez votre numéro de suivi par e-mail <strong>sous 24 à 72 heures</strong> après votre commande.</p>",
+            "page": "",
+            "tabiconsize": 20
+          }
+        },
+        "custom_HfHLay": {
+          "type": "custom",
+          "disabled": true,
+          "settings": {
+            "code": "<div style=\"border:1px solid #4F5A3A; border-radius:15px; margin-bottom:10px; transition: transform 0.3s;\">\n  <details onmouseover=\"this.style.transform='translateY(-5px)';\" onmouseout=\"this.style.transform='translateY(0)';\">\n    <summary style=\"cursor:pointer; padding:12px; color:#4F5A3A; font-weight:600;\">\n      Retours sous 30 jours\n    </summary>\n    <div style=\"padding:12px; border-top:1px solid #4F5A3A;\">\n      <p>Les articles peuvent être retournés dans les 30 jours suivant la livraison. Passé ce délai, aucun retour ne pourra être accepté.</p>\n      <p>Pour plus d'informations, consultez notre <u><a title=\"Politique de retour et remboursement\" href=\"/pages/politique-de-retour-et-remboursement\">politique de retour et remboursement</a></u>.</p>\n    </div>\n  </details>\n</div>\n\n<div style=\"border:1px solid #4F5A3A; border-radius:15px; margin-bottom:10px; transition: transform 0.3s;\">\n  <details onmouseover=\"this.style.transform='translateY(-5px)';\" onmouseout=\"this.style.transform='translateY(0)';\">\n    <summary style=\"cursor:pointer; padding:12px; color:#4F5A3A; font-weight:600;\">\n      Service client\n    </summary>\n    <div style=\"padding:12px; border-top:1px solid #4F5A3A;\">\n      <p><strong>Horaires du service client :</strong> du lundi au vendredi, 09h00–17h00</p>\n      <p>Vous pouvez nous contacter via notre page <u><a title=\"Contact\" href=\"/pages/contact\">Contact</a></u>.</p>\n    </div>\n  </details>\n</div>\n\n<div style=\"border:1px solid #4F5A3A; border-radius:15px; transition: transform 0.3s;\">\n  <details onmouseover=\"this.style.transform='translateY(-5px)';\" onmouseout=\"this.style.transform='translateY(0)';\">\n    <summary style=\"cursor:pointer; padding:12px; color:#4F5A3A; font-weight:600;\">\n      Livraison offerte\n    </summary>\n    <div style=\"padding:12px; border-top:1px solid #4F5A3A;\">\n      <p>Maison Valmont offre la livraison sur toutes les commandes.</p>\n      <p>Pour plus d'informations, consultez notre <u><a href=\"/pages/politique-de-livraison\" title=\"Politique de livraison\">politique de livraison</a></u>.</p>\n    </div>\n  </details>\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "utitle_jfn37t",
+        "price",
+        "custom_uspIcons01",
+        "variant_picker",
+        "quantity_selector_jwBPEM",
+        "buy_buttons",
+        "description",
+        "tab_YRPxr6",
+        "tab_zEArqB",
+        "custom_HfHLay"
+      ],
+      "settings": {
+        "show_sticky_atc": true,
+        "sku_enable": false,
+        "image_position": "left",
+        "image_size": "medium",
+        "product_zoom_enable": false,
+        "thumbnail_position": "below",
+        "thumbnail_height": "flexible",
+        "thumbnail_arrows": false,
+        "mobile_layout": "partial",
+        "enable_video_looping": false,
+        "product_video_style": "muted"
+      }
+    },
+    "sub": {
+      "type": "product-full-width",
+      "disabled": true,
+      "settings": {
+        "max_width": true
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {
+        "recent_count": 5
+      }
+    },
+    "collection-return": {
+      "type": "collection-return",
+      "settings": {}
+    },
+    "u_return_products_dtEeB3": {
+      "type": "u-return-products",
+      "name": "U Related Products",
+      "settings": {
+        "product_recommendations_heading": "Complétez votre tenue",
+        "related_count": 4,
+        "products_per_row": 4
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "product_recommendations_heading": "You may also like",
+        "related_count": 5,
+        "products_per_row": 5
+      }
+    },
+    "u_custom_featured_collection_MKVrq8": {
+      "type": "u-custom-featured-collection",
+      "disabled": true,
+      "name": "U Featured Collections",
+      "settings": {
+        "collection": "femme",
+        "products_limit": 4,
+        "padt": 20,
+        "padb": 20,
+        "sec-bg": "#fff",
+        "heading": "Complétez votre tenue",
+        "heading-size": 20,
+        "mheading-size": 18,
+        "heading-space": 30,
+        "img-size": "portrait",
+        "badge": "",
+        "showbadge": false,
+        "badge_color": "#000000",
+        "badgebg": "#ffffff",
+        "paddingtb": 2,
+        "paddinglr": 8,
+        "badgebdr": 5,
+        "top": 10,
+        "left": 10,
+        "regularpriocecolor": "#000",
+        "salepriocecolor": "#000",
+        "viewall": ""
+      }
+    },
+    "u_faq_gzAQFG": {
+      "type": "u-faq",
+      "blocks": {
+        "u_collapsible_fXVttm": {
+          "type": "u-collapsible",
+          "settings": {
+            "coll_btn1": "Quels sont les frais et délais de livraison ?",
+            "coll_content1": "<p>La livraison est offerte sur toutes les commandes, sans frais cachés. Délai de livraison total (traitement + expédition) : <strong>6 à 12 jours ouvrables</strong>. Détails sur notre <a href=\"/pages/politique-de-livraison\">politique de livraison</a>.</p>"
+          }
+        },
+        "u_collapsible_UxGWQC": {
+          "type": "u-collapsible",
+          "settings": {
+            "coll_btn1": "Quelle est votre politique de retour ?",
+            "coll_content1": "<p>Vous disposez de 30 jours après réception pour retourner un article et obtenir un remboursement ou un échange, à condition qu'il soit inutilisé et dans son état d'origine. Détails sur notre <a href=\"/pages/politique-de-retour-et-remboursement\">politique de retour et remboursement</a>.</p>"
+          }
+        },
+        "u_collapsible_VgGrrz": {
+          "type": "u-collapsible",
+          "settings": {
+            "coll_btn1": "Comment puis-je suivre ma commande ?",
+            "coll_content1": "<p>Dès l'expédition de votre commande, vous recevrez un e-mail de suivi avec toutes les informations nécessaires. Il vous suffit de suivre le lien pour suivre votre livraison en temps réel.</p>"
+          }
+        },
+        "u_collapsible_3Wdt9e": {
+          "type": "u-collapsible",
+          "settings": {
+            "coll_btn1": "D'autres questions ?",
+            "coll_content1": "<p>Nous sommes là pour vous aider ! Consultez notre <a href=\"/pages/faq\">FAQ complète</a> ou contactez notre équipe via notre <a href=\"/pages/contact\">page de contact</a> — nous serons ravis de vous accompagner.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "u_collapsible_fXVttm",
+        "u_collapsible_UxGWQC",
+        "u_collapsible_VgGrrz",
+        "u_collapsible_3Wdt9e"
+      ],
+      "name": "U New FAQ'S",
+      "settings": {
+        "select-bg": "#fff",
+        "bdrtop": "#e6e6e6",
+        "stitle": "",
+        "title": "<p>Questions Fréquentes<br/><br/></p>",
+        "mtop": 28,
+        "mbottom": 40,
+        "sub-heading-fontsize": 16,
+        "heading-fontsize": 22,
+        "mobileheading-fontsize": 20,
+        "title-size": 16,
+        "contentsize": 13
+      }
+    },
+    "u_faq_xwU7PJ": {
+      "type": "u-faq",
+      "blocks": {
+        "u_collapsible_8AJFfE": {
+          "type": "u-collapsible",
+          "settings": {
+            "coll_btn1": "Quels sont les frais de livraison ?",
+            "coll_content1": "<p>Vous bénéficiez de la livraison offerte sur toutes vos commandes.</p>"
+          }
+        },
+        "u_collapsible_3Qjadi": {
+          "type": "u-collapsible",
+          "settings": {
+            "coll_btn1": "Quelle est votre politique de retour ?",
+            "coll_content1": "<p>Vous pouvez retourner un article non désiré dans un délai de <strong>30 jours </strong>après réception, pour un remboursement complet ou un échange. Les articles doivent être inutilisés et dans leur emballage d'origine.<strong> </strong></p>"
+          }
+        },
+        "u_collapsible_qNjzwi": {
+          "type": "u-collapsible",
+          "settings": {
+            "coll_btn1": "Comment puis-je suivre ma commande ?",
+            "coll_content1": "<p>Après l'expédition, vous recevrez un e-mail contenant le numéro de suivi. Il vous permettra de suivre l'état de votre commande.</p>"
+          }
+        },
+        "u_collapsible_Hmqeic": {
+          "type": "u-collapsible",
+          "settings": {
+            "coll_btn1": "D'autres questions ?",
+            "coll_content1": "<p>Pour toute autre question, consultez notre FAQ complète ou contactez-nous via notre <a href=\"/pages/contact\">page de contact</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "u_collapsible_8AJFfE",
+        "u_collapsible_3Qjadi",
+        "u_collapsible_qNjzwi",
+        "u_collapsible_Hmqeic"
+      ],
+      "disabled": true,
+      "name": "U New FAQ'S",
+      "settings": {
+        "select-bg": "#fff",
+        "bdrtop": "#e6e6e6",
+        "stitle": "",
+        "title": "<p></p><p>Questions Fréquentes</p><p></p>",
+        "mtop": 30,
+        "mbottom": 40,
+        "sub-heading-fontsize": 16,
+        "heading-fontsize": 30,
+        "mobileheading-fontsize": 20,
+        "title-size": 16,
+        "contentsize": 13
+      }
+    },
+    "u_features_dWniNq": {
+      "type": "u-features",
+      "blocks": {
+        "item_KaTQaH": {
+          "type": "item",
+          "settings": {
+            "text": "Retours sous 30 jours"
+          }
+        },
+        "item_WpzQxN": {
+          "type": "item",
+          "settings": {
+            "text": "Livraison offerte"
+          }
+        },
+        "item_Pf94EV": {
+          "type": "item",
+          "settings": {
+            "text": "Paiement sécurisé"
+          }
+        }
+      },
+      "block_order": [
+        "item_KaTQaH",
+        "item_WpzQxN",
+        "item_Pf94EV"
+      ],
+      "name": "U Features",
+      "settings": {
+        "space_top": 55,
+        "space_bottom": 45,
+        "desktop_gap": 14,
+        "mobile_gap": 10,
+        "padding_top": 7,
+        "padding_bottom": 7,
+        "padding_left": 12,
+        "padding_right": 18,
+        "item_gap": 10,
+        "border_radius": 30,
+        "border_width": 1,
+        "icon_box_width": 30,
+        "icon_box_height": 30,
+        "icon_width": 18,
+        "icon_radius": 50,
+        "text_size_desktop": 14,
+        "text_size_mobile": 13,
+        "bg_color": "#ffffff",
+        "hover_bg": "#4f5a3a",
+        "border_color": "#e5e5e5",
+        "hover_border": "#4f5a3a",
+        "text_color": "#111111",
+        "hover_text": "#ffffff",
+        "icon_bg": "#e8e8e1"
+      }
+    },
+    "u_back_to_top_BBgjfA": {
+      "type": "u-back-to-top",
+      "name": "U Back to Top Button",
+      "settings": {
+        "button_bg": "#4f5a3a",
+        "button_size": 50,
+        "bottom_offset": 120,
+        "mbottom_offset": 80,
+        "right_offset": 30,
+        "brdrRadius": 0,
+        "icon_size": 20
+      }
+    }
+  },
+  "order": [
+    "main",
+    "sub",
+    "recently-viewed",
+    "collection-return",
+    "u_return_products_dtEeB3",
+    "product-recommendations",
+    "u_custom_featured_collection_MKVrq8",
+    "u_faq_gzAQFG",
+    "u_faq_xwU7PJ",
+    "u_features_dWniNq",
+    "u_back_to_top_BBgjfA"
+  ]
+}

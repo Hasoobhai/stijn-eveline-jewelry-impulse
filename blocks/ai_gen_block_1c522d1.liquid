@@ -1,0 +1,560 @@
+{% doc %}
+  @prompt
+    <p><strong>How We Can Help</strong></p>
+    <ul>
+    <li><strong>Order Updates:</strong> Check the status of your order, including processing, shipping, and delivery information.</li>
+    <li><strong>Product Information:</strong> Get details on item features and guidance on using products from our website.</li>
+    <li><strong>Provide Feedback:</strong> Share your comments or suggestions regarding our services.</li>
+    <li><strong>Store Inquiries:</strong> Find answers about our policies, procedures, and general questions about the store.</li>
+    </ul>
+    <p>Trevinae is owned and operated by Yano Ecom, a company registered in the Netherlands.</p>
+    <p><strong>Registration Number:</strong> 95697446</p>
+    <p><strong>Address:</strong> Jan Voermanstraat 100, 2, 1061 XK Amsterdam, Netherlands</p>
+    <p>Need guidance? You can rely on us for straightforward assistance.</p>
+    <p><strong>Email: </strong><a href="mailto:info@trevinae.com" title="info@trevinae.com">info@trevinae.com</a><strong><br>Phone Number: </strong><a href="tel:+31616165091" title="+31616165091">+31616165091</a><strong><br>Contact Form: </strong>Available on our <a href="/pages/contact-us" title="Contact Us">Contact Us</a> page</p>
+    <p><strong>Customer Service Hours: </strong>Monday to Friday, 09:00-17:00 GMT</p>
+    
+    customize those in boxes or something creative and use borders, colors, movement hovering, creativity and dont chanega ny word and make them editable in customize, put the how we can help in a line and under put the company info in a box and the contact info in another box
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-contact-info-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .ai-contact-info__container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-contact-info__full-width-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border: {{ block.settings.border_width }}px {{ block.settings.border_style }} {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    margin-bottom: {{ block.settings.card_spacing }}px;
+    transition: all {{ block.settings.animation_speed }}s ease;
+    box-shadow: {{ block.settings.shadow_x }}px {{ block.settings.shadow_y }}px {{ block.settings.shadow_blur }}px {{ block.settings.shadow_color }};
+  }
+
+  .ai-contact-info__full-width-{{ ai_gen_id }}:hover {
+    transform: translateY({{ block.settings.hover_lift }}px);
+    border-color: {{ block.settings.hover_border_color }};
+    box-shadow: {{ block.settings.hover_shadow_x }}px {{ block.settings.hover_shadow_y }}px {{ block.settings.hover_shadow_blur }}px {{ block.settings.hover_shadow_color }};
+  }
+
+  .ai-contact-info__two-column-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ block.settings.card_spacing }}px;
+  }
+
+  .ai-contact-info__card-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border: {{ block.settings.border_width }}px {{ block.settings.border_style }} {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    transition: all {{ block.settings.animation_speed }}s ease;
+    box-shadow: {{ block.settings.shadow_x }}px {{ block.settings.shadow_y }}px {{ block.settings.shadow_blur }}px {{ block.settings.shadow_color }};
+  }
+
+  .ai-contact-info__card-{{ ai_gen_id }}:hover {
+    transform: translateY({{ block.settings.hover_lift }}px);
+    border-color: {{ block.settings.hover_border_color }};
+    box-shadow: {{ block.settings.hover_shadow_x }}px {{ block.settings.hover_shadow_y }}px {{ block.settings.hover_shadow_blur }}px {{ block.settings.hover_shadow_color }};
+  }
+
+  .ai-contact-info__card-title-{{ ai_gen_id }} {
+    color: {{ block.settings.title_color }};
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: {{ block.settings.title_weight }};
+    margin: 0 0 {{ block.settings.title_spacing }}px 0;
+  }
+
+  .ai-contact-info__card-content-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: {{ block.settings.line_height }};
+  }
+
+  .ai-contact-info__card-content-{{ ai_gen_id }} ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ai-contact-info__card-content-{{ ai_gen_id }} li {
+    margin-bottom: {{ block.settings.list_spacing }}px;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .ai-contact-info__card-content-{{ ai_gen_id }} li:before {
+    content: "{{ block.settings.bullet_icon }}";
+    position: absolute;
+    left: 0;
+    color: {{ block.settings.accent_color }};
+  }
+
+  .ai-contact-info__card-content-{{ ai_gen_id }} strong {
+    color: {{ block.settings.strong_color }};
+    font-weight: {{ block.settings.strong_weight }};
+  }
+
+  .ai-contact-info__card-content-{{ ai_gen_id }} a {
+    color: {{ block.settings.link_color }};
+    text-decoration: {{ block.settings.link_decoration }};
+    transition: color {{ block.settings.animation_speed }}s ease;
+  }
+
+  .ai-contact-info__card-content-{{ ai_gen_id }} a:hover {
+    color: {{ block.settings.link_hover_color }};
+  }
+
+  .ai-contact-info__card-content-{{ ai_gen_id }} p {
+    margin: 0 0 {{ block.settings.paragraph_spacing }}px 0;
+  }
+
+  .ai-contact-info__card-content-{{ ai_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-contact-info__two-column-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<contact-info-{{ ai_gen_id }} class="ai-contact-info-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-contact-info__container-{{ ai_gen_id }}">
+    <div class="ai-contact-info__full-width-{{ ai_gen_id }}">
+      <h3 class="ai-contact-info__card-title-{{ ai_gen_id }}">{{ block.settings.card_1_title }}</h3>
+      <div class="ai-contact-info__card-content-{{ ai_gen_id }}">
+        {{ block.settings.card_1_content }}
+      </div>
+    </div>
+
+    <div class="ai-contact-info__two-column-{{ ai_gen_id }}">
+      <div class="ai-contact-info__card-{{ ai_gen_id }}">
+        <h3 class="ai-contact-info__card-title-{{ ai_gen_id }}">{{ block.settings.card_2_title }}</h3>
+        <div class="ai-contact-info__card-content-{{ ai_gen_id }}">
+          {{ block.settings.card_2_content }}
+        </div>
+      </div>
+
+      <div class="ai-contact-info__card-{{ ai_gen_id }}">
+        <h3 class="ai-contact-info__card-title-{{ ai_gen_id }}">{{ block.settings.card_3_title }}</h3>
+        <div class="ai-contact-info__card-content-{{ ai_gen_id }}">
+          {{ block.settings.card_3_content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</contact-info-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ContactInfo{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.cards = this.querySelectorAll('.ai-contact-info__card-{{ ai_gen_id }}, .ai-contact-info__full-width-{{ ai_gen_id }}');
+        this.setupAccessibility();
+      }
+
+      setupAccessibility() {
+        this.cards.forEach((card) => {
+          card.setAttribute('tabindex', '0');
+        });
+      }
+    }
+
+    customElements.define('contact-info-{{ ai_gen_id }}', ContactInfo{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Contact info cards",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "How we can help"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_1_title",
+      "label": "Title",
+      "default": "How We Can Help"
+    },
+    {
+      "type": "richtext",
+      "id": "card_1_content",
+      "label": "Content",
+      "default": "<ul><li><strong>Order Updates:</strong> Check the status of your order, including processing, shipping, and delivery information.</li><li><strong>Product Information:</strong> Get details on item features and guidance on using products from our website.</li><li><strong>Provide Feedback:</strong> Share your comments or suggestions regarding our services.</li><li><strong>Store Inquiries:</strong> Find answers about our policies, procedures, and general questions about the store.</li></ul>"
+    },
+    {
+      "type": "header",
+      "content": "Company information"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_2_title",
+      "label": "Title",
+      "default": "Company Information"
+    },
+    {
+      "type": "richtext",
+      "id": "card_2_content",
+      "label": "Content",
+      "default": "<p>Trevinae is owned and operated by Yano Ecom, a company registered in the Netherlands.</p><p><strong>Registration Number:</strong> 95697446</p><p><strong>Address:</strong> Jan Voermanstraat 100, 2, 1061 XK Amsterdam, Netherlands</p>"
+    },
+    {
+      "type": "header",
+      "content": "Contact information"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_3_title",
+      "label": "Title",
+      "default": "Get In Touch"
+    },
+    {
+      "type": "richtext",
+      "id": "card_3_content",
+      "label": "Content",
+      "default": "<p>Need guidance? You can rely on us for straightforward assistance.</p><p><strong>Email: </strong><a href=\"mailto:info@trevinae.com\" title=\"info@trevinae.com\">info@trevinae.com</a></p><p><strong>Phone Number: </strong><a href=\"tel:+31616165091\" title=\"+31616165091\">+31616165091</a></p><p><strong>Contact Form: </strong>Available on our <a href=\"/pages/contact-us\" title=\"Contact Us\">Contact Us</a> page</p><p><strong>Customer Service Hours: </strong>Monday to Friday, 09:00-17:00 GMT</p>"
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Padding",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "card_spacing",
+      "label": "Spacing between cards",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Border"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "border_style",
+      "label": "Style",
+      "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "dashed", "label": "Dashed" },
+        { "value": "dotted", "label": "Dotted" }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Color",
+      "default": "#e8e8e1"
+    },
+    {
+      "type": "color",
+      "id": "hover_border_color",
+      "label": "Hover color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "header",
+      "content": "Shadow"
+    },
+    {
+      "type": "range",
+      "id": "shadow_x",
+      "label": "Horizontal offset",
+      "min": -20,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "shadow_y",
+      "label": "Vertical offset",
+      "min": -20,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "shadow_blur",
+      "label": "Blur",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "shadow_color",
+      "label": "Color",
+      "default": "#00000015"
+    },
+    {
+      "type": "header",
+      "content": "Hover effects"
+    },
+    {
+      "type": "range",
+      "id": "hover_lift",
+      "label": "Lift amount",
+      "min": -20,
+      "max": 0,
+      "step": 1,
+      "unit": "px",
+      "default": -5
+    },
+    {
+      "type": "range",
+      "id": "hover_shadow_x",
+      "label": "Hover shadow horizontal",
+      "min": -20,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "hover_shadow_y",
+      "label": "Hover shadow vertical",
+      "min": -20,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "hover_shadow_blur",
+      "label": "Hover shadow blur",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "hover_shadow_color",
+      "label": "Hover shadow color",
+      "default": "#00000025"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "label": "Animation speed",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "unit": "s",
+      "default": 0.3
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#321004"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 14,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "title_weight",
+      "label": "Title weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "title_spacing",
+      "label": "Title spacing",
+      "min": 5,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "line_height",
+      "label": "Line height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.6
+    },
+    {
+      "type": "color",
+      "id": "strong_color",
+      "label": "Bold text color",
+      "default": "#321004"
+    },
+    {
+      "type": "range",
+      "id": "strong_weight",
+      "label": "Bold text weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "default": 600
+    },
+    {
+      "type": "header",
+      "content": "Links"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover color",
+      "default": "#321004"
+    },
+    {
+      "type": "select",
+      "id": "link_decoration",
+      "label": "Link decoration",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "underline", "label": "Underline" }
+      ],
+      "default": "underline"
+    },
+    {
+      "type": "header",
+      "content": "List style"
+    },
+    {
+      "type": "text",
+      "id": "bullet_icon",
+      "label": "Bullet icon",
+      "default": "✓"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Bullet color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "range",
+      "id": "list_spacing",
+      "label": "List item spacing",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "paragraph_spacing",
+      "label": "Paragraph spacing",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact info cards"
+    }
+  ]
+}
+{% endschema %}

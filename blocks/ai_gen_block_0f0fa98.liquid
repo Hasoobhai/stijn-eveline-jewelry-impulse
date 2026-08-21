@@ -1,0 +1,663 @@
+{% doc %}
+  @prompt
+    create a box and outside the box next to it i want to put an image inclind and use border and movement and button and title and creative design, movement when hovering a little
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-creative-box-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .ai-creative-box-container-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-creative-box-content-{{ ai_gen_id }} {
+    flex: 1;
+    background-color: {{ block.settings.box_background_color }};
+    border: {{ block.settings.border_width }}px {{ block.settings.border_style }} {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: {{ block.settings.box_padding }}px;
+    box-shadow: {{ block.settings.shadow_x }}px {{ block.settings.shadow_y }}px {{ block.settings.shadow_blur }}px {{ block.settings.shadow_color }};
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-creative-box-content-{{ ai_gen_id }}:hover {
+    transform: translateY(-{{ block.settings.hover_lift }}px);
+    box-shadow: {{ block.settings.shadow_x }}px {{ block.settings.shadow_y | plus: block.settings.hover_lift }}px {{ block.settings.shadow_blur | plus: 10 }}px {{ block.settings.shadow_color }};
+  }
+
+  .ai-creative-box-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 16px 0;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-creative-box-content-{{ ai_gen_id }}:hover .ai-creative-box-title-{{ ai_gen_id }} {
+    transform: translateX({{ block.settings.title_hover_move }}px);
+  }
+
+  .ai-creative-box-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.text_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+  }
+
+  .ai-creative-box-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
+    background-color: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_text_size }}px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid {{ block.settings.button_background }};
+  }
+
+  .ai-creative-box-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_background }};
+    color: {{ block.settings.button_hover_text_color }};
+    border-color: {{ block.settings.button_hover_background }};
+    transform: translateY(-2px);
+  }
+
+  .ai-creative-box-image-wrapper-{{ ai_gen_id }} {
+    flex: 0 0 {{ block.settings.image_width }}px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-creative-box-image-wrapper-{{ ai_gen_id }}:hover {
+    transform: translateY(-{{ block.settings.image_hover_lift }}px) rotate({{ block.settings.image_hover_rotation }}deg);
+  }
+
+  .ai-creative-box-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    border: {{ block.settings.image_border_width }}px solid {{ block.settings.image_border_color }};
+    transform: rotate({{ block.settings.image_rotation }}deg);
+    transition: transform 0.3s ease;
+    box-shadow: {{ block.settings.image_shadow_x }}px {{ block.settings.image_shadow_y }}px {{ block.settings.image_shadow_blur }}px {{ block.settings.image_shadow_color }};
+  }
+
+  .ai-creative-box-image-wrapper-{{ ai_gen_id }}:hover .ai-creative-box-image-{{ ai_gen_id }} {
+    transform: rotate({{ block.settings.image_rotation }}deg) scale(1.05);
+  }
+
+  .ai-creative-box-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate({{ block.settings.image_rotation }}deg);
+    border: {{ block.settings.image_border_width }}px solid {{ block.settings.image_border_color }};
+    transition: transform 0.3s ease;
+  }
+
+  .ai-creative-box-image-wrapper-{{ ai_gen_id }}:hover .ai-creative-box-image-placeholder-{{ ai_gen_id }} {
+    transform: rotate({{ block.settings.image_rotation }}deg) scale(1.05);
+  }
+
+  .ai-creative-box-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-creative-box-container-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .ai-creative-box-image-wrapper-{{ ai_gen_id }} {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .ai-creative-box-image-{{ ai_gen_id }},
+    .ai-creative-box-image-placeholder-{{ ai_gen_id }} {
+      transform: rotate(0deg);
+    }
+
+    .ai-creative-box-image-wrapper-{{ ai_gen_id }}:hover .ai-creative-box-image-{{ ai_gen_id }},
+    .ai-creative-box-image-wrapper-{{ ai_gen_id }}:hover .ai-creative-box-image-placeholder-{{ ai_gen_id }} {
+      transform: rotate(0deg) scale(1.05);
+    }
+
+    .ai-creative-box-image-wrapper-{{ ai_gen_id }}:hover {
+      transform: translateY(-{{ block.settings.image_hover_lift }}px);
+    }
+  }
+{% endstyle %}
+
+<creative-box-{{ ai_gen_id }} class="ai-creative-box-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-creative-box-container-{{ ai_gen_id }}">
+    {% if block.settings.layout == 'image_right' %}
+      <div class="ai-creative-box-content-{{ ai_gen_id }}">
+        {% if block.settings.title != blank %}
+          <h2 class="ai-creative-box-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="ai-creative-box-text-{{ ai_gen_id }}">{{ block.settings.text }}</div>
+        {% endif %}
+        {% if block.settings.button_text != blank %}
+          <a href="{{ block.settings.button_link }}" class="ai-creative-box-button-{{ ai_gen_id }}">
+            {{ block.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+      <div class="ai-creative-box-image-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.image %}
+          <img
+            src="{{ block.settings.image | image_url: width: 800 }}"
+            alt="{{ block.settings.image.alt | escape }}"
+            class="ai-creative-box-image-{{ ai_gen_id }}"
+            loading="lazy"
+            width="{{ block.settings.image.width }}"
+            height="{{ block.settings.image.height }}"
+          >
+        {% else %}
+          <div class="ai-creative-box-image-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="ai-creative-box-image-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.image %}
+          <img
+            src="{{ block.settings.image | image_url: width: 800 }}"
+            alt="{{ block.settings.image.alt | escape }}"
+            class="ai-creative-box-image-{{ ai_gen_id }}"
+            loading="lazy"
+            width="{{ block.settings.image.width }}"
+            height="{{ block.settings.image.height }}"
+          >
+        {% else %}
+          <div class="ai-creative-box-image-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="ai-creative-box-content-{{ ai_gen_id }}">
+        {% if block.settings.title != blank %}
+          <h2 class="ai-creative-box-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="ai-creative-box-text-{{ ai_gen_id }}">{{ block.settings.text }}</div>
+        {% endif %}
+        {% if block.settings.button_text != blank %}
+          <a href="{{ block.settings.button_link }}" class="ai-creative-box-button-{{ ai_gen_id }}">
+            {{ block.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</creative-box-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CreativeBox{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupAnimations();
+      }
+
+      setupAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.1 });
+
+        const content = this.querySelector('.ai-creative-box-content-{{ ai_gen_id }}');
+        const image = this.querySelector('.ai-creative-box-image-wrapper-{{ ai_gen_id }}');
+
+        if (content) {
+          content.style.opacity = '0';
+          content.style.transform = 'translateY(20px)';
+          content.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(content);
+        }
+
+        if (image) {
+          image.style.opacity = '0';
+          image.style.transform = 'translateY(20px)';
+          image.style.transition = 'opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s';
+          observer.observe(image);
+        }
+      }
+    }
+
+    customElements.define('creative-box-{{ ai_gen_id }}', CreativeBox{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Creative box with image",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "image_left",
+          "label": "Left"
+        },
+        {
+          "value": "image_right",
+          "label": "Right"
+        }
+      ],
+      "default": "image_right"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Discover something amazing"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Explore our unique collection and find exactly what you're looking for. Quality craftsmanship meets modern design."
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "title_hover_move",
+      "label": "Title hover movement",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "label": "Vertical padding",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Background color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Hover background color",
+      "default": "#27a09a"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Box style"
+    },
+    {
+      "type": "color",
+      "id": "box_background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "box_padding",
+      "label": "Padding",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "border_style",
+      "label": "Border style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "dashed",
+          "label": "Dashed"
+        },
+        {
+          "value": "dotted",
+          "label": "Dotted"
+        }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e8e8e1"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "shadow_x",
+      "label": "Shadow horizontal",
+      "min": -20,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "shadow_y",
+      "label": "Shadow vertical",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "shadow_blur",
+      "label": "Shadow blur",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "shadow_color",
+      "label": "Shadow color",
+      "default": "#00000015"
+    },
+    {
+      "type": "range",
+      "id": "hover_lift",
+      "label": "Box hover lift",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Width",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "image_rotation",
+      "label": "Rotation",
+      "min": -15,
+      "max": 15,
+      "step": 1,
+      "unit": "deg",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "image_hover_lift",
+      "label": "Hover lift",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "image_hover_rotation",
+      "label": "Hover rotation",
+      "min": -10,
+      "max": 10,
+      "step": 1,
+      "unit": "deg",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "image_border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 3
+    },
+    {
+      "type": "color",
+      "id": "image_border_color",
+      "label": "Border color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "image_shadow_x",
+      "label": "Shadow horizontal",
+      "min": -20,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "image_shadow_y",
+      "label": "Shadow vertical",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "image_shadow_blur",
+      "label": "Shadow blur",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "image_shadow_color",
+      "label": "Shadow color",
+      "default": "#00000020"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Creative box with image"
+    }
+  ]
+}
+{% endschema %}

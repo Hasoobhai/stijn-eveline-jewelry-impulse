@@ -1,0 +1,357 @@
+{% style %}
+  .u-cus-products--{{ section.id }}{
+    padding-top:{{section.settings.padt}}px;
+    padding-bottom:{{section.settings.padb}}px;
+    background:{{ section.settings.sec-bg }};
+  }
+  .u-heading--{{ section.id }}{
+    font-size:{{ section.settings.heading-size }}px;
+    margin-bottom:{{section.settings.heading-space}}px;
+  }
+  .u-cus-products--{{ section.id }} .price--on-sale .price__current{
+    color:{{section.settings.salepriocecolor}};
+  }
+  .u-cus-products--{{ section.id }} .price--on-sale .price__was{
+    color:{{section.settings.regularpriocecolor}};
+  }
+  .u-cus-products--{{ section.id }}:hover .swiper-button-next,
+  .u-cus-products--{{ section.id }}:hover .swiper-button-prev{
+    opacity:1;
+  }
+  .u-cus-products--{{ section.id }} .u-cus-products-badge{
+    background:{{ section.settings.badge_color }};
+    padding:{{ section.settings.paddingtb }}px {{ section.settings.paddinglr }}px;
+    color:{{ section.settings.badgebg }};
+    border-radius:{{section.settings.badgebdr }}px;
+    top:{{section.settings.top }}px;
+    left:{{section.settings.left }}px;
+  }
+  {% if section.settings.img-size == 'portrait' %}
+    .u-cus-products--{{ section.id }} .product-item-img{
+      padding-top:130%;
+    }
+  {% else %}
+    .u-cus-products--{{ section.id }} .product-item-img{
+      padding-top:100%;
+    }
+  {% endif %}
+  @media(max-width:769px){
+    .u-heading--{{ section.id }}{
+      font-size:{{ section.settings.mheading-size }}px;
+    }
+  }
+{% endstyle %}
+
+{% assign collection = collections[section.settings.collection] %}
+<section class="u-cus-products--{{ section.id }}">
+  <div class="page-width container">
+    <div class="u-cus-products-header">
+      {% if section.settings.heading != blank %}
+        <h2 class="u-heading--{{ section.id }} u-efatured-collection-center">{{ section.settings.heading }}</h2>
+      {% endif %}
+    </div>
+    <div class="u-cus-products-content umySwiper" style="position:relative;">
+      <div class="swiper-wrapper">
+        {% if collection %}
+          {% assign products_limit = section.settings.products_limit %}
+          {% for product in collection.products limit: products_limit %}
+            {% assign current_variant = product.selected_or_first_available_variant %}
+
+            {% assign on_sale = false %}
+            {% if current_variant.compare_at_price > current_variant.price %}
+              {% assign on_sale = true %}
+            {% endif %}
+
+            {% assign saved_amount = blank %}
+            {% if on_sale and settings.product_save_amount %}
+              {% if settings.product_save_type == 'dollar' %}
+                {% capture saved_amount %}{{ current_variant.compare_at_price | minus: current_variant.price | money }}{% endcapture %}
+              {% else %}
+                {% capture saved_amount %}{{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round: 0 }}%{% endcapture %}
+              {% endif %}
+            {% endif %}
+
+            <div class="swiper-slide">
+              <div class="product-item">
+                <a href="{{ product.url }}" style="display:block;">
+                  <div class="product-item-img">
+                    {% if section.settings.showbadge != blank and product.compare_at_price > product.price %}
+                      <span class="u-cus-products-badge">
+                        {% if saved_amount != blank %}-{{ saved_amount }}{% endif %}
+                        {{ section.settings.badge }}
+                      </span>
+                    {% endif %}
+                    <img
+                      src="{{ product.featured_image | image_url }}"
+                      alt="{{ product.title }} - Main Image"
+                      width="100%"
+                      class="primary-image"
+                      height="auto"
+                    >
+                    {% if product.images.size > 1 %}
+                      <img
+                        src="{{ product.images[1] | image_url }}"
+                        alt="{{ product.title }} - Second Image"
+                        class="secondary-image"
+                        width="100%"
+                        height="auto"
+                      >
+                    {% endif %}
+                  </div>
+                </a>
+                <a class="product-title" href="{{ product.url }}">{{ product.title }}</a>
+                {% render 'u-prices',
+                  product: product,
+                  show_currency_code: settings.product_currency_code_enabled,
+                  for_variant_picker: true,
+                  current_variant: current_variant,
+                  section: section,
+                  on_sale: on_sale
+                %}
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>Please select a collection.</p>
+        {% endif %}
+      </div>
+
+      {% if section.settings.viewall != blank and collection %}
+        <a class="u-color-btn u-color-btn-primary" href="{{ collection.url }}">
+          {{ section.settings.viewall }}
+        </a>
+      {% endif %}
+
+      <div class="swiper-button-next">
+        <div class="u-color-btn u-color-btn-next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg>
+        </div>
+      </div>
+      <div class="swiper-button-prev">
+        <div class="u-color-btn u-color-btn-prev">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M169.4 297.4C156.9 309.9 156.9 330.2 169.4 342.7L361.4 534.7C373.9 547.2 394.2 547.2 406.7 534.7C419.2 522.2 419.2 501.9 406.7 489.4L237.3 320L406.6 150.6C419.1 138.1 419.1 117.8 406.6 105.3C394.1 92.8 373.8 92.8 361.3 105.3L169.3 297.3z"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initReviewsSlider();
+    document.querySelectorAll('.umySwiper').forEach(el => {
+      el.style.visibility = 'visible';
+      el.style.opacity = '1';
+    });
+    document.addEventListener('shopify:section:load', initReviewsSlider);
+    document.addEventListener('shopify:section:unload', initReviewsSlider);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "U Featured Collections",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "min": 2,
+      "max": 24,
+      "step": 1,
+      "label": "Number of Products",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padt",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Space Top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padb",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Space Bottom",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "default": "#fff",
+      "id": "sec-bg",
+      "label": "Background Color"
+    },
+    {
+      "type": "inline_richtext",
+      "label": "Heading",
+      "id": "heading",
+      "default": "Featured Collection"
+    },
+    {
+      "type": "range",
+      "id": "heading-size",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop Heading Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mheading-size",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Heading Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "heading-space",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Space Bottom",
+      "default": 10
+    },
+    {
+      "type": "select",
+      "id": "img-size",
+      "label": "Image Size",
+      "options": [
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "portrait"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "badge",
+      "label": "Badge Text (optional)",
+    },
+    {
+      "type": "checkbox",
+      "id": "showbadge",
+      "label": "Show Badge",
+      "default":true,
+    },
+    {
+        "type": "color",
+        "id": "badge_color",
+        "label": "Badge Background",
+        "default": "#000000"
+    },
+    {
+        "type": "color",
+        "id": "badgebg",
+        "label": "Badge Text Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "range",
+        "id": "paddingtb",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Top Bottom Padding",
+        "default": 2
+    },
+    {
+        "type": "range",
+        "id": "paddinglr",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Left Right Padding",
+        "default": 8
+    },
+    {
+        "type": "range",
+        "id": "badgebdr",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Border Radius",
+        "default": 5
+    },
+    {
+        "type": "range",
+        "id": "top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Top",
+        "default": 10
+    },
+    {
+        "type": "range",
+        "id": "left",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Left",
+        "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Price Color"
+    },
+    {
+      "type": "color",
+      "default": "#000",
+      "label": "Regular Price Color",
+      "id": "regularpriocecolor"
+    },
+    {
+      "type": "color",
+      "default": "#000",
+      "label": "Sale Price Color",
+      "id": "salepriocecolor"
+    },
+    {
+      "type": "header",
+      "content": "View All"
+    },
+    {
+        "type":"inline_richtext",
+        "label": "Button Text Here",
+        "default":"See More",
+        "id":"viewall"
+    }
+  ],
+  "presets": [
+    {
+      "name": "U Featured Collections"
+    }
+  ]
+}
+{% endschema %}

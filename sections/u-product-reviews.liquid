@@ -1,0 +1,286 @@
+{% style %}
+   .u-review-box{
+      border-radius:{{section.settings.borderradius}}px;
+   }
+   .u-reviews--{{ section.id }}{
+      padding-top:{{section.settings.topspacing}}px;
+      padding-bottom:{{section.settings.btmspacing}}px;
+      background:{{section.settings.bg}};
+   }
+   .u-reviews--{{ section.id }} .u-review-content-title{
+     font-size:{{section.settings.titlefontsize}}px;
+  }
+   .u-reviews--{{ section.id }} .authornamesize{
+     font-size:{{section.settings.namefontsize}}px;
+   }
+   .u-reviews--{{ section.id }} .u-review-swp-content{
+     font-size:{{section.settings.contentsize}}px;
+   }
+{% endstyle %}
+<section class="u-reviews--{{ section.id }}">
+  <div class="page-width container wrapper">
+    <div class="u-reviews-wrapper ureviews-sec">
+        <div class="u-reviews-header">
+            <div class="u-reviews-headings">
+                <h2 class="u-reviews-bheading" style="font-size:{{ section.settings.headingsize }}px">{{ section.settings.Heading }}</h2>
+                <p class="u-reviews-subheading" style="font-size:{{ section.settings.sheadingsize }}px">{{ section.settings.SubHeading }}</p>
+            </div>
+            <div class="u-swiper-arrows-wrapper">
+            <div class="swiper-button-prev">
+                <div class="u-color-btn u-color-btn-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M169.4 297.4C156.9 309.9 156.9 330.2 169.4 342.7L361.4 534.7C373.9 547.2 394.2 547.2 406.7 534.7C419.2 522.2 419.2 501.9 406.7 489.4L237.3 320L406.6 150.6C419.1 138.1 419.1 117.8 406.6 105.3C394.1 92.8 373.8 92.8 361.3 105.3L169.3 297.3z"/></svg>
+                </div>
+            </div>
+                <div class="swiper-button-next">
+                    <div class="u-color-btn u-color-btn-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="u-reviews-container swiper u-reviews-umySwiper">
+
+
+        <div class="u-reviews-container-inner swiper-wrapper">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'review' %}
+                <div class="u-review-box swiper-slide">
+                  <div class="pencho">
+                    <div class="u-review-box-header">
+                      {% if block.settings.reviewheading != blank %}
+                        <div class="u-reviews-box-header">
+                            <h3 class="u-review-content-title">{{ block.settings.reviewheading }}</h3>
+                            {% if block.settings.name != blank %}
+                                <span class="authornamesize">{{ block.settings.name }}</span>
+                            {% endif %}
+                        </div>
+                      {% endif %}
+                      {% if block.settings.img != blank %}
+                        <img class="author-img" src="{{ block.settings.img | image_url }}" width="50px" height="auto">
+                      {% endif %}
+                      <div class="u-review-box-info">
+                        {% if block.settings.stars != blank %}
+                          <img src="{{ block.settings.stars | image_url }}" width="100px" height="auto">
+                        {% else %}
+                          {% render 'u-review-five-stars', block: block %}
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="u-review-content">
+                      <div class="u-review-swp-content">
+                        {{ block.settings['review-content'] }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    reviewsinitializeSwiper();
+    document.addEventListener('shopify:section:load', reviewsinitializeSwiper);
+    document.addEventListener('shopify:section:unload', reviewsinitializeSwiper);
+  });
+</script>
+{% schema %}
+{
+  "name": "U Reviews",
+  "settings": [
+    {
+      "type": "range",
+      "id": "topspacing",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Spacing Top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "btmspacing",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Spacing",
+      "default": 20
+    },
+    {
+      "type":"inline_richtext",
+      "id":"Heading",
+      "label":"Heading"
+    },
+    {
+      "type":"inline_richtext",
+      "id":"SubHeading",
+      "label":"Sub Heading"
+    },
+    {
+      "type":"color",
+      "id":"bg",
+      "label":"Background"
+    },
+    {
+      "type": "range",
+      "id": "borderradius",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "headingsize",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Size",
+      "default":24
+    },
+    {
+      "type": "range",
+      "id": "sheadingsize",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Sub Heading Size",
+      "default":24
+    },
+    {
+      "type": "range",
+      "id": "namefontsize",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Author Name Size",
+      "default":16
+    },
+    {
+      "type": "range",
+      "id": "titlefontsize",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size",
+      "default":18
+    },
+     {
+      "type": "range",
+      "id": "contentsize",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Content Font Size",
+      "default":14
+    },
+    {
+      "type":"color",
+      "label":"Stars Color",
+      "id":"iconcolor",
+      "default":"#000"
+    },
+    {
+      "type":"color",
+      "label":"Disabled Stars Color",
+      "id":"disablediconcolor",
+      "default":"#ababab"
+    },
+
+  ],
+  "blocks":[
+    {
+      "type":"review",
+      "name":"Review Slide",
+      "settings":[
+        {
+          "type":"image_picker",
+          "id":"stars",
+          "label":"Upload Stars"
+        },
+        {
+          "type": "select",
+          "id": "enablestars",
+          "label": "Stars Count",
+          "options": [
+            {
+              "value": "one",
+              "label": "one"
+            },
+            {
+              "value": "two",
+              "label": "two"
+            },
+            {
+              "value": "three",
+              "label": "three"
+            },
+            {
+              "value": "four",
+              "label": "four"
+            },
+            {
+              "value": "five",
+              "label": "five"
+            }
+          ],
+          "default": "five"
+        },
+        {
+          "type":"text",
+          "id":"name",
+          "label":"Enter Name",
+          "default":"Sara J."
+        },
+        {
+          "type":"inline_richtext",
+          "id":"reviewheading",
+          "label":"Review Title",
+          "default":"Fantastic Products"
+        },
+        {
+          "type":"inline_richtext",
+          "id":"review-content",
+          "label":"Enter Review Text",
+          "default":"We are so happy with the products. Top quality in fair price. Will buy from this shop again."
+        }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name":"U Reviews",
+      "blocks": [
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

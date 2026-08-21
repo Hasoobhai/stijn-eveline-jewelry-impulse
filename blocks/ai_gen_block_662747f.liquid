@@ -1,0 +1,425 @@
+{% doc %}
+  @prompt
+    <p><strong>Return Requirements</strong><br>Items can be returned within 30 days of delivery. Returns outside this period cannot be accepted. Returned items must meet the following conditions:</p>
+    <ul>
+    <li>The item must be unused and unwashed</li>
+    <li>Remain in its original packaging</li>
+    <li>All tags must be attached</li>
+    </ul>
+    <p><strong>Returning an Item</strong></p>
+    <ol>
+    <li>Contact <a href="mailto:info@trevinae.com" title="info@trevinae.com">info@trevinae.com</a> with your order number and reason for the return.</li>
+    <li>Wait for approval before sending the item back.</li>
+    <li>Follow the provided instructions for packaging and the return address.</li>
+    <li>Ensure the item is packaged securely to prevent damage during shipping.</li>
+    </ol>
+    
+    
+    put those 2 in two diff boxes customizd with diff designs and make them editable in cutsomzie', below each other, a design tham move but simple, change design and make them move when hovering
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-return-policy-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+
+  .ai-return-policy-container-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.box_spacing }}px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }} {
+    position: relative;
+    padding: {{ block.settings.box_padding }}px;
+    border-radius: {{ block.settings.box_border_radius }}px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+    overflow: hidden;
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }}:hover {
+    transform: translateY(-8px);
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: {{ block.settings.box_border_radius }}px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }}:hover::before {
+    opacity: 1;
+  }
+
+  .ai-return-policy-box-1-{{ ai_gen_id }} {
+    background: linear-gradient(135deg, {{ block.settings.box_1_bg_color }} 0%, {{ block.settings.box_1_bg_gradient }} 100%);
+    border: {{ block.settings.box_border_width }}px solid {{ block.settings.box_1_border_color }};
+    box-shadow: 0 4px 15px rgba(47, 180, 174, 0.15);
+  }
+
+  .ai-return-policy-box-1-{{ ai_gen_id }}:hover {
+    box-shadow: 0 12px 30px rgba(47, 180, 174, 0.25);
+  }
+
+  .ai-return-policy-box-1-{{ ai_gen_id }}::before {
+    background: linear-gradient(135deg, transparent 0%, rgba(47, 180, 174, 0.05) 100%);
+  }
+
+  .ai-return-policy-box-2-{{ ai_gen_id }} {
+    background: linear-gradient(135deg, {{ block.settings.box_2_bg_color }} 0%, {{ block.settings.box_2_bg_gradient }} 100%);
+    border: {{ block.settings.box_border_width }}px solid {{ block.settings.box_2_border_color }};
+    box-shadow: 0 4px 15px rgba(215, 74, 93, 0.15);
+  }
+
+  .ai-return-policy-box-2-{{ ai_gen_id }}:hover {
+    box-shadow: 0 12px 30px rgba(215, 74, 93, 0.25);
+  }
+
+  .ai-return-policy-box-2-{{ ai_gen_id }}::before {
+    background: linear-gradient(135deg, transparent 0%, rgba(215, 74, 93, 0.05) 100%);
+  }
+
+  .ai-return-policy-box-content-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 1;
+  }
+
+  .ai-return-policy-box-1-{{ ai_gen_id }} h3,
+  .ai-return-policy-box-1-{{ ai_gen_id }} h4,
+  .ai-return-policy-box-1-{{ ai_gen_id }} p,
+  .ai-return-policy-box-1-{{ ai_gen_id }} li {
+    color: {{ block.settings.box_1_text_color }};
+  }
+
+  .ai-return-policy-box-2-{{ ai_gen_id }} h3,
+  .ai-return-policy-box-2-{{ ai_gen_id }} h4,
+  .ai-return-policy-box-2-{{ ai_gen_id }} p,
+  .ai-return-policy-box-2-{{ ai_gen_id }} li {
+    color: {{ block.settings.box_2_text_color }};
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }} h3 {
+    font-size: {{ block.settings.heading_size }}px;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 12px;
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }} h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .ai-return-policy-box-1-{{ ai_gen_id }} h3::after {
+    background-color: {{ block.settings.box_1_border_color }};
+  }
+
+  .ai-return-policy-box-2-{{ ai_gen_id }} h3::after {
+    background-color: {{ block.settings.box_2_border_color }};
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }}:hover h3::after {
+    width: 100px;
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }} p {
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.7;
+    margin: 0 0 16px 0;
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }} ul,
+  .ai-return-policy-box-{{ ai_gen_id }} ol {
+    margin: 0 0 16px 0;
+    padding-left: 24px;
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }} li {
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .ai-return-policy-box-1-{{ ai_gen_id }} ul li::marker {
+    color: {{ block.settings.box_1_border_color }};
+  }
+
+  .ai-return-policy-box-2-{{ ai_gen_id }} ol li::marker {
+    color: {{ block.settings.box_2_border_color }};
+    font-weight: 600;
+  }
+
+  .ai-return-policy-box-1-{{ ai_gen_id }} a {
+    color: {{ block.settings.box_1_link_color }};
+    text-decoration: none;
+    border-bottom: 2px solid {{ block.settings.box_1_link_color }};
+    transition: border-color 0.3s ease;
+  }
+
+  .ai-return-policy-box-2-{{ ai_gen_id }} a {
+    color: {{ block.settings.box_2_link_color }};
+    text-decoration: none;
+    border-bottom: 2px solid {{ block.settings.box_2_link_color }};
+    transition: border-color 0.3s ease;
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }} a:hover {
+    border-bottom-color: transparent;
+  }
+
+  .ai-return-policy-icon-{{ ai_gen_id }} {
+    position: absolute;
+    top: {{ block.settings.box_padding }}px;
+    right: {{ block.settings.box_padding }}px;
+    width: 50px;
+    height: 50px;
+    opacity: 0.1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .ai-return-policy-box-{{ ai_gen_id }}:hover .ai-return-policy-icon-{{ ai_gen_id }} {
+    opacity: 0.2;
+    transform: rotate(10deg) scale(1.1);
+  }
+
+  .ai-return-policy-box-1-{{ ai_gen_id }} .ai-return-policy-icon-{{ ai_gen_id }} {
+    color: {{ block.settings.box_1_border_color }};
+  }
+
+  .ai-return-policy-box-2-{{ ai_gen_id }} .ai-return-policy-icon-{{ ai_gen_id }} {
+    color: {{ block.settings.box_2_border_color }};
+  }
+{% endstyle %}
+
+<div class="ai-return-policy-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-return-policy-container-{{ ai_gen_id }}">
+    <div class="ai-return-policy-box-{{ ai_gen_id }} ai-return-policy-box-1-{{ ai_gen_id }}">
+      <svg class="ai-return-policy-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 11l3 3L22 4"></path>
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+      </svg>
+      <div class="ai-return-policy-box-content-{{ ai_gen_id }}">
+        {% if block.settings.box_1_heading != blank %}
+          <h3>{{ block.settings.box_1_heading }}</h3>
+        {% endif %}
+        {% if block.settings.box_1_content != blank %}
+          {{ block.settings.box_1_content }}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="ai-return-policy-box-{{ ai_gen_id }} ai-return-policy-box-2-{{ ai_gen_id }}">
+      <svg class="ai-return-policy-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <div class="ai-return-policy-box-content-{{ ai_gen_id }}">
+        {% if block.settings.box_2_heading != blank %}
+          <h3>{{ block.settings.box_2_heading }}</h3>
+        {% endif %}
+        {% if block.settings.box_2_content != blank %}
+          {{ block.settings.box_2_content }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Return policy boxes",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Box 1"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "box_1_heading",
+      "label": "Heading",
+      "default": "Return Requirements"
+    },
+    {
+      "type": "richtext",
+      "id": "box_1_content",
+      "label": "Content",
+      "default": "<p>Items can be returned within 30 days of delivery. Returns outside this period cannot be accepted. Returned items must meet the following conditions:</p><ul><li>The item must be unused and unwashed</li><li>Remain in its original packaging</li><li>All tags must be attached</li></ul>"
+    },
+    {
+      "type": "color",
+      "id": "box_1_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "box_1_bg_gradient",
+      "label": "Background gradient color",
+      "default": "#f0fffe"
+    },
+    {
+      "type": "color",
+      "id": "box_1_text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "box_1_border_color",
+      "label": "Accent color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "color",
+      "id": "box_1_link_color",
+      "label": "Link color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "header",
+      "content": "Box 2"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "box_2_heading",
+      "label": "Heading",
+      "default": "Returning an Item"
+    },
+    {
+      "type": "richtext",
+      "id": "box_2_content",
+      "label": "Content",
+      "default": "<ol><li>Contact <a href=\"mailto:info@trevinae.com\">info@trevinae.com</a> with your order number and reason for the return.</li><li>Wait for approval before sending the item back.</li><li>Follow the provided instructions for packaging and the return address.</li><li>Ensure the item is packaged securely to prevent damage during shipping.</li></ol>"
+    },
+    {
+      "type": "color",
+      "id": "box_2_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "box_2_bg_gradient",
+      "label": "Background gradient color",
+      "default": "#fff5f6"
+    },
+    {
+      "type": "color",
+      "id": "box_2_text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "box_2_border_color",
+      "label": "Accent color",
+      "default": "#d74a5d"
+    },
+    {
+      "type": "color",
+      "id": "box_2_link_color",
+      "label": "Link color",
+      "default": "#2fb4ae"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "box_spacing",
+      "label": "Space between boxes",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "box_padding",
+      "label": "Box padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "box_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "box_border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 18,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Return policy boxes"
+    }
+  ]
+}
+{% endschema %}
