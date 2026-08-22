@@ -25,8 +25,8 @@
           "type": "custom",
           "settings": {
             "show_footer_title": true,
-            "title": "Custom text",
-            "text": "<p>Add your own custom text here.</p>",
+            "title": "Contact Us",
+            "text": "<p>Email: info@evelinejewelry<br/></p><p>Opening Hours:<br/>Monday to Friday: 9:00 am to 5:00 pm<br/>Saturday to Sunday: 10:00 am to 5:00 pm</p>",
             "container_width": 25
           }
         },
