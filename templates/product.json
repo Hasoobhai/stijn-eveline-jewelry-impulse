@@ -100,12 +100,12 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.featured_collection.name",
       "settings": {
-        "title": "Featured collection",
-        "home_featured_products": "",
+        "title": "10000+ People Favorite Collection",
+        "home_featured_products": "bracelets",
         "per_row": 4,
         "rows": 1,
         "mobile_scrollable": true,
-        "view_all": true,
+        "view_all": false,
         "divider": false
       }
     },
