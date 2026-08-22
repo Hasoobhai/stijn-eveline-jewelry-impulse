@@ -67,7 +67,7 @@
     "type_collection_size": 22,
     "button_style": "square",
     "icon_weight": "4px",
-    "icon_linecaps": "round",
+    "icon_linecaps": "miter",
     "product_save_amount": true,
     "product_save_type": "percent",
     "quick_shop_enable": false,
