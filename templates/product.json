@@ -59,6 +59,12 @@
             "surface_pickup_enable": false,
             "show_gift_card_recipient": false
           }
+        },
+        "custom_JHitKh": {
+          "type": "custom",
+          "settings": {
+            "code": "<div class=\"clearance-box\">\n  <div class=\"clearance-title\">CLEARANCE SALE DISCOUNT</div>\n  <div class=\"clearance-line\">\n    <strong>Add any 2 items</strong> to your cart and get <strong>25% OFF</strong>\n  </div>\n  <div class=\"clearance-line\">\n    <strong>Add any 3 items</strong> to your cart and get <strong>35% OFF</strong>\n  </div>\n  <div class=\"clearance-line\">\n    <strong>Add any 4 items</strong> to your cart and get <strong>45% OFF</strong>\n  </div>\n</div>\n<style>\n  .clearance-box {\n    background-color: #f2ebe4;\n    border: 1px solid #c9a98a;\n    padding: 20px 24px;\n    margin: 20px 0;\n  }\n  .clearance-title {\n    font-family: Georgia, \"Times New Roman\", serif;\n    font-size: 13px;\n    font-weight: 700;\n    letter-spacing: 0.12em;\n    color: #8A4B2B;\n    text-align: center;\n    margin-bottom: 14px;\n  }\n  .clearance-line {\n    font-family: Georgia, \"Times New Roman\", serif;\n    font-size: 14px;\n    color: #2b1f14;\n    margin-bottom: 10px;\n    line-height: 1.4;\n    white-space: nowrap;\n  }\n  @media (max-width: 480px) {\n    .clearance-line {\n      font-size: 12px;\n      white-space: nowrap;\n    }\n    .clearance-title {\n      font-size: 11px;\n    }\n    .clearance-box {\n      padding: 16px 14px;\n    }\n  }\n  .clearance-line:last-child {\n    margin-bottom: 0;\n  }\n  .clearance-line strong {\n    color: #8A4B2B;\n  }\n</style>"
+          }
         }
       },
       "block_order": [
@@ -66,7 +72,8 @@
         "price",
         "variant_picker",
         "quantity_selector_jwBPEM",
-        "buy_buttons"
+        "buy_buttons",
+        "custom_JHitKh"
       ],
       "settings": {
         "show_sticky_atc": true,
@@ -80,6 +87,19 @@
         "mobile_layout": "partial",
         "enable_video_looping": false,
         "product_video_style": "muted"
+      }
+    },
+    "featured_collection_7QtBiR": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.featured_collection.name",
+      "settings": {
+        "title": "Featured collection",
+        "home_featured_products": "",
+        "per_row": 4,
+        "rows": 1,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
       }
     },
     "haseeb_testimonial_XTMjaN": {
@@ -358,6 +378,7 @@
   },
   "order": [
     "main",
+    "featured_collection_7QtBiR",
     "haseeb_testimonial_XTMjaN",
     "haseeb_faq_cfWKBh",
     "sub",
