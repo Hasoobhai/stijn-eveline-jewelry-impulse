@@ -46,6 +46,68 @@
         "lazyload_images": true
       }
     },
+    "haseeb_review_ffWPAp": {
+      "type": "haseeb-review",
+      "blocks": {
+        "benefit_XLx9Bj": {
+          "type": "benefit",
+          "settings": {
+            "icon": "heart",
+            "title": "HANDMADE BY Eveline"
+          }
+        },
+        "benefit_jFjq9C": {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "title": "EASE STIFF JOINTS"
+          }
+        },
+        "benefit_HFiYhD": {
+          "type": "benefit",
+          "settings": {
+            "icon": "heart-time",
+            "title": "BOOST CIRCULATION"
+          }
+        },
+        "benefit_xYGhpU": {
+          "type": "benefit",
+          "settings": {
+            "icon": "clock",
+            "title": "99.9% PURE COPPER"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_XLx9Bj",
+        "benefit_jFjq9C",
+        "benefit_HFiYhD",
+        "benefit_xYGhpU"
+      ],
+      "name": "Benefits & review bar",
+      "settings": {
+        "full_width": true,
+        "content_width": 1200,
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "column_gap": 10,
+        "padding_top": 10,
+        "padding_bottom": 14,
+        "bg_color": "#FDEAEA",
+        "icon_color": "#DF8096",
+        "text_color": "#321004",
+        "star_color": "#db9d46",
+        "accent_color": "#06a26e",
+        "font_family": "serif",
+        "icon_size": 22,
+        "benefit_size": 11,
+        "show_reviews": true,
+        "star_count": 5,
+        "star_size": 24,
+        "review_text": "4.9/5 - Rated Excellent by 2,400+ verified buyers on <strong>Trustpilot</strong>",
+        "review_size": 12
+      }
+    },
     "collection-header": {
       "type": "collection-header",
       "custom_css": [
@@ -115,6 +177,7 @@
   },
   "order": [
     "slideshow_d9Yabm",
+    "haseeb_review_ffWPAp",
     "collection-header",
     "main-collection",
     "u_custom_featured_collection_Etz7kj"
