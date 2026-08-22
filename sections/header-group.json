@@ -21,10 +21,19 @@
             "link_text": "Up to 80% off",
             "link": ""
           }
+        },
+        "announcement_YAiELC": {
+          "type": "announcement",
+          "settings": {
+            "text": "30-DAY",
+            "link_text": "MONEY-BACK GUARANTEE",
+            "link": ""
+          }
         }
       },
       "block_order": [
-        "announcement-0"
+        "announcement-0",
+        "announcement_YAiELC"
       ],
       "settings": {
         "announcement_compact": true
