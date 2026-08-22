@@ -13,9 +13,47 @@
       "type": "_blocks",
       "disabled": true,
       "settings": {}
+    },
+    "slideshow_CnzM3h": {
+      "type": "slideshow",
+      "blocks": {
+        "image_ebtT8A": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "Two line\ntitle slide.",
+            "title_size": 80,
+            "utitle_size": 25,
+            "subheading": "And big, beautiful imagery",
+            "link": "",
+            "link_text": "Optional button",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "rgba(0,0,0,0)",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_22_2026_02_13_46_PM.png",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_ebtT8A"
+      ],
+      "name": "t:sections.slideshow.presets.hero_optional_slideshow.name",
+      "settings": {
+        "section_height": "natural",
+        "mobile_height": "auto",
+        "parallax": false,
+        "style": "bars",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "lazyload_images": true
+      }
     }
   },
   "order": [
-    "17832962473ffcca6f"
+    "17832962473ffcca6f",
+    "slideshow_CnzM3h"
   ]
 }
