@@ -9,11 +9,6 @@
  */
 {
   "sections": {
-    "17832962473ffcca6f": {
-      "type": "_blocks",
-      "disabled": true,
-      "settings": {}
-    },
     "slideshow_CnzM3h": {
       "type": "slideshow",
       "blocks": {
@@ -51,10 +46,23 @@
         "autoplay_speed": 5,
         "lazyload_images": true
       }
+    },
+    "featured_collection_mGpcAG": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.featured_collection.name",
+      "settings": {
+        "title": "Best Sellers",
+        "home_featured_products": "bestsellers",
+        "per_row": 4,
+        "rows": 2,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
+      }
     }
   },
   "order": [
-    "17832962473ffcca6f",
-    "slideshow_CnzM3h"
+    "slideshow_CnzM3h",
+    "featured_collection_mGpcAG"
   ]
 }
