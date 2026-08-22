@@ -21,7 +21,7 @@
           "settings": {
             "regularpricesize": 13,
             "salespricesize": 20,
-            "regularpricecolor": "#EC1E1E",
+            "regularpricecolor": "#ec1e1e",
             "salespricecolor": "#000000",
             "regularpricebold": false,
             "salespricebold": true,
@@ -29,7 +29,7 @@
             "singlepricecolor": "#000000",
             "singlepricebold": false,
             "badge-text": "",
-            "badge-bg": "#DF8096",
+            "badge-bg": "#df8096",
             "textclr": "#ffffff",
             "u-badge-font-size": 12,
             "u-badge-bottom": 0,
