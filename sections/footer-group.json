@@ -33,7 +33,7 @@
         "menu_9hbBqT": {
           "type": "menu",
           "settings": {
-            "show_footer_title": false,
+            "show_footer_title": true,
             "menu": "haseeb-menu",
             "container_width": 33
           }
@@ -41,7 +41,7 @@
         "menu_UdkmPA": {
           "type": "menu",
           "settings": {
-            "show_footer_title": false,
+            "show_footer_title": true,
             "menu": "footer-policies",
             "container_width": 33
           }
