@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "buttonclr": "#4F5A3A",
-    "buttonclr2": "#4F5A3A",
+    "buttonclr": "#000000",
+    "buttonclr2": "#000000",
     "regularpricesize": 14,
     "salespricesize": 14,
     "regularpricecolor": "#EC1E1E",
