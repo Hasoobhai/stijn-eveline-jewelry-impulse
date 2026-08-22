@@ -88,6 +88,7 @@
         "testimonial_QLyPwP": {
           "type": "testimonial",
           "settings": {
+            "video_url": "",
             "stars": 5,
             "text": "<p>\"I was skeptical for years. My daughter finally convinced me to try it. I've worn it every day since — it goes on before anything else in the morning.\"</p>",
             "author": "Sandra M.",
@@ -98,6 +99,7 @@
         "testimonial_xePdVB": {
           "type": "testimonial",
           "settings": {
+            "video_url": "",
             "stars": 5,
             "text": "<p>\"Bought one piece from Eveline Jewelry, came back for two more. The finish still looks like the day it arrived.\"</p>",
             "author": "Carol B.",
@@ -108,6 +110,7 @@
         "testimonial_ThHarE": {
           "type": "testimonial",
           "settings": {
+            "video_url": "",
             "stars": 5,
             "text": "<p>\"I expected to wear these occasionally. They're now the first thing I put on in the morning and the last thing I take off.\"</p>",
             "author": "Diane R.",
@@ -118,6 +121,7 @@
         "testimonial_FpPzD6": {
           "type": "testimonial",
           "settings": {
+            "video_url": "",
             "stars": 5,
             "text": "<p>\"You can feel immediately this is solid metal — the weight, the texture, the way it sits on the wrist. I've had plated pieces before. This is completely different.\"</p>",
             "author": "Margaret T.",
@@ -128,6 +132,7 @@
         "testimonial_jAQgUq": {
           "type": "testimonial",
           "settings": {
+            "video_url": "",
             "stars": 5,
             "text": "<p>\"Worn every day for two months — through the shower, through work, through everything. Still looks exactly like day one.\"</p>",
             "author": "Patricia K.",
@@ -174,7 +179,7 @@
         "star_size": 16,
         "show_placeholder": false,
         "bg_color": "#ffffff",
-        "card_bg": "#FDEAEA",
+        "card_bg": "#fdeaea",
         "card_border": "#7d5449",
         "heading_color": "#1a1a1a",
         "subheading_color": "#837c5c",
@@ -187,6 +192,127 @@
         "padding_bottom": 36,
         "margin_top": 32,
         "margin_bottom": 12,
+        "border_width": 0,
+        "border_color": "#121212"
+      }
+    },
+    "haseeb_faq_cfWKBh": {
+      "type": "haseeb-faq",
+      "blocks": {
+        "faq_TM8KXN": {
+          "type": "faq",
+          "settings": {
+            "question": "What if I would like to return my order?",
+            "answer": "<p>We want you to love your Eveline Jewelry piece just as much as we loved making it. If it is not quite right, you are welcome to request a return or exchange within 30 days of receiving your order.</p><p>All we ask is that the piece comes back to us in acceptable condition and in its original packaging. Email info@evelinejewelry.com with your order details, and we will take care of the rest.</p>",
+            "open_by_default": false
+          }
+        },
+        "faq_Jrp6it": {
+          "type": "faq",
+          "settings": {
+            "question": "Will my jewelry fade or tarnish?",
+            "answer": "<p>Your jewelry is made to last. Our materials are chosen for durability and everyday wear, and the finish is designed to hold up over time. Like anything well made, it will develop character with use, but it should not discolor under normal conditions. With a little care, it will stay beautiful for years.</p>",
+            "open_by_default": false
+          }
+        },
+        "faq_7C8wrE": {
+          "type": "faq",
+          "settings": {
+            "question": "Is shipping really free?",
+            "answer": "<p>Yes. For all orders within the Europe. There is no paid priority option because it is not needed — every customer receives the same fast, careful service.</p><p>We pack each Eveline Jewelry piece by hand and ship it as soon as your order comes in. Once your package is on its way, you will receive a tracking number by email.</p><p>Delivery times vary slightly depending on where you live, but our promise is simple: we ship quickly, and you never pay for shipping.</p>",
+            "open_by_default": false
+          }
+        },
+        "faq_XbPQY4": {
+          "type": "faq",
+          "settings": {
+            "question": "Are all your products handmade?",
+            "answer": "<p>Every design is created by Eveline Jewelry. Each piece begins as a sketch at our workbench, is brought to life by hand in our studio, and is inspected by one of us before it is sent to you.</p>",
+            "open_by_default": false
+          }
+        },
+        "faq_LzzX9T": {
+          "type": "faq",
+          "settings": {
+            "question": "What if my piece breaks or needs repair?",
+            "answer": "<p>Life happens. If your piece needs attention, email info@evelinejewelry.com with your order number and a clear photo of the issue. Within the first 6 months, we will repair or replace pieces that show a problem with materials or craftsmanship whenever possible.</p><p>For accidents or well loved wear after that, we are still happy to review repair options or offer a discount toward a replacement.</p>",
+            "open_by_default": false
+          }
+        },
+        "feature_g6Cjk6": {
+          "type": "feature",
+          "settings": {
+            "icon": "shield",
+            "title": "Lifetime Warranty",
+            "text": "<p>On every piece we make.</p>"
+          }
+        },
+        "feature_BRGd63": {
+          "type": "feature",
+          "settings": {
+            "icon": "card",
+            "title": "Safe Payments",
+            "text": "<p>Encrypted and safe every time you shop.</p>"
+          }
+        },
+        "feature_JLyeij": {
+          "type": "feature",
+          "settings": {
+            "icon": "refresh",
+            "title": "30-Day Returns",
+            "text": "<p>Full refund, no questions asked.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_TM8KXN",
+        "faq_Jrp6it",
+        "faq_7C8wrE",
+        "faq_XbPQY4",
+        "faq_LzzX9T",
+        "feature_g6Cjk6",
+        "feature_BRGd63",
+        "feature_JLyeij"
+      ],
+      "name": "FAQ with image",
+      "settings": {
+        "media_position": "right",
+        "media_first_mobile": true,
+        "media_ratio_desktop": "4/3",
+        "media_ratio_mobile": "4/3",
+        "media_radius": 0,
+        "caption": "FAQ",
+        "caption_uppercase": false,
+        "caption_size": 12,
+        "heading": "Our Guarantees",
+        "heading_tag": "h2",
+        "heading_size": 48,
+        "intro": "<p>We stand behind every Eveline Jewelry piece. Enjoy 30 day returns, a lifetime craftsmanship warranty, and easy repairs. For questions or to start a return, email us anytime at info@evelinejewelry.com</p>",
+        "text_alignment": "left",
+        "body_size": 14,
+        "exclusive": true,
+        "faq_schema": true,
+        "question_size": 16,
+        "feature_columns_desktop": 3,
+        "feature_columns_mobile": 2,
+        "feature_icon_size": 40,
+        "feature_title_size": 16,
+        "feature_text_size": 10,
+        "feature_radius": 8,
+        "bg_color": "#f6f5f2",
+        "heading_color": "#121212",
+        "text_color": "#121212",
+        "divider_color": "#e0e0e0",
+        "feature_bg": "#ffffff",
+        "feature_border": "#121212",
+        "feature_icon_color": "#4f7857",
+        "column_split": "1fr 1fr",
+        "content_width": 1400,
+        "gap_desktop": 80,
+        "gap_mobile": 40,
+        "padding_top": 16,
+        "padding_bottom": 36,
+        "section_radius": 0,
         "border_width": 0,
         "border_color": "#121212"
       }
@@ -233,6 +359,7 @@
   "order": [
     "main",
     "haseeb_testimonial_XTMjaN",
+    "haseeb_faq_cfWKBh",
     "sub",
     "recently-viewed",
     "collection-return",
