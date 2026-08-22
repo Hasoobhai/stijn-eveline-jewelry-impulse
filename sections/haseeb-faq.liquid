@@ -4,6 +4,9 @@
 
   assign faq_blocks = section.blocks | where: 'type', 'faq'
   assign feature_blocks = section.blocks | where: 'type', 'feature'
+
+  assign heading_plain = section.settings.heading | strip_html | strip
+  assign media_alt = section.settings.image.alt | default: heading_plain
 -%}
 
 <style>
@@ -325,7 +328,7 @@
               loading: 'lazy',
               widths: '360, 535, 750, 1070, 1500',
               sizes: '(min-width: 1024px) 45vw, 92vw',
-              alt: section.settings.image.alt | default: section.settings.heading | strip_html
+              alt: media_alt
           }}
         {%- else -%}
           {{ 'image' | placeholder_svg_tag }}
