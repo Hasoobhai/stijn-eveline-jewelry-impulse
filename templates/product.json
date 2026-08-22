@@ -404,9 +404,9 @@
         "text_block_CdxRUi": {
           "type": "text_block",
           "settings": {
-            "icon": "chat",
-            "title": "Example title",
-            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products.</p>"
+            "icon": "package",
+            "title": "30 Days Return Guarantee",
+            "text": "<p>Love it or return/exchange it within 30 days — completely worry-free.</p>"
           }
         }
       },
