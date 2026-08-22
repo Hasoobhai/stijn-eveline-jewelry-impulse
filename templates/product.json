@@ -38,6 +38,16 @@
             "innerspacelr": 10
           }
         },
+        "separator_3k7UqP": {
+          "type": "separator",
+          "settings": {}
+        },
+        "custom_yLfABF": {
+          "type": "custom",
+          "settings": {
+            "code": "<div class=\"product-block\">\n                      <!-- 🔥 PROMO CHECKMARK BULLETS -->\n<style>\n  .c.promoCheckmarks ul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n  }\n  .c.promoCheckmarks li {\n    display: flex;\n    align-items: center;\n    margin-bottom: 8px;\n  }\n  span.icon-and-text {\n    display: flex;\n    align-items: center;\n  }\n  span.icon-and-text img {\n    width: 20px;\n    margin-right: 8px;\n  }\n  .aus_p_container {\n    margin-top: 0 !important;\n    margin-bottom: 20px;\n  }\n  li.sales-point span {\n    color: #000000;\n  }\n</style>\n<div class=\"aus_p_container\">\n  <div class=\"aus_bullets\">\n    <div class=\"c promoCheckmarks\">\n      <ul>\n        <li class=\"sales-point\">\n          <span class=\"icon-and-text\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0955/6082/7262/files/Ontwerp_zonder_titel_-_2026-07-07T135846.752.png?v=1783425562\">\n            <span>99.9% Pure Copper</span>\n          </span>\n        </li>\n        <li class=\"sales-point\">\n          <span class=\"icon-and-text\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0955/6082/7262/files/2_d3bfce89-5f0c-43e0-86a1-2151c5699c0f.png?v=1759846537\">\n            <span>30-Day Money-Back Guarantee</span>\n          </span>\n        </li>\n        <li class=\"sales-point\">\n          <span class=\"icon-and-text\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0955/6082/7262/files/3_6a2637a9-473f-42fd-b46c-89f84dd6279f.png?v=1759846539\">\n            <span>Handmade &amp; Lifetime Warranty</span>\n          </span>\n        </li>\n      </ul>\n    </div>\n  </div>\n</div>\n<!-- 🔥 ALMOST SOLD OUT BADGE ONDERAAN -->\n<style>\n  @keyframes inventory-pulse {\n    0% {\n      opacity: 0.6;\n      transform: scale(1);\n    }\n    100% {\n      transform: scale(2.5);\n      opacity: 0;\n    }\n  }\n  .almost-sold-out {\n    display: flex;\n    justify-content: flex-start;\n    align-items: center;\n    color: #aa0000;\n    font-weight: 400;\n    margin-top: 2px;\n    margin-bottom: 10px;\n  }\n  .almost-sold-out .pulse-dot {\n    position: relative;\n    width: 12px;\n    height: 12px;\n    margin-right: 8px;\n  }\n  .almost-sold-out .pulse-dot::before,\n  .almost-sold-out .pulse-dot::after {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 12px;\n    height: 12px;\n    border-radius: 50%;\n    background-color: #aa0000;\n  }\n  .almost-sold-out .pulse-dot::before {\n    animation: inventory-pulse 2s infinite;\n  }\n</style>\n<div class=\"almost-sold-out\">\n  <span class=\"pulse-dot\"></span>\n  <span id=\"stock-text\">Only 2 left in stock</span>\n</div>\n<script>\n  document.addEventListener(\"DOMContentLoaded\", function() {\n    var randomNum = Math.floor(Math.random() * (6 - 2 + 1)) + 2;\n    document.getElementById(\"stock-text\").innerText =\n      \"Only \" + randomNum + \" left in stock\";\n  });\n</script>\n                    </div>"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -76,6 +86,8 @@
       "block_order": [
         "utitle_jfn37t",
         "price",
+        "separator_3k7UqP",
+        "custom_yLfABF",
         "variant_picker",
         "quantity_selector_jwBPEM",
         "buy_buttons",
