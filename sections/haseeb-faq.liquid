@@ -1,0 +1,1004 @@
+{%- liquid
+  assign uid = section.id
+  assign root = 'fq-' | append: uid
+
+  assign faq_blocks = section.blocks | where: 'type', 'faq'
+  assign feature_blocks = section.blocks | where: 'type', 'feature'
+-%}
+
+<style>
+  #{{ root }} {
+    --fq-text: {{ section.settings.text_color }};
+    --fq-heading: {{ section.settings.heading_color }};
+    --fq-divider: {{ section.settings.divider_color }};
+    --fq-icon: {{ section.settings.feature_icon_color }};
+    --fq-card-bg: {{ section.settings.feature_bg }};
+    --fq-card-border: {{ section.settings.feature_border }};
+    --fq-media-ratio: {{ section.settings.media_ratio_mobile }};
+    background-color: {{ section.settings.bg_color }};
+    {% if section.settings.border_width > 0 %}
+      border-top: solid {{ section.settings.border_color }} {{ section.settings.border_width }}px;
+      border-bottom: solid {{ section.settings.border_color }} {{ section.settings.border_width }}px;
+    {% endif %}
+    border-radius: {{ section.settings.section_radius }}px;
+    overflow: hidden;
+  }
+
+  #{{ root }} .fq-inner {
+    margin: 0 auto;
+    max-width: var(--page-width, {{ section.settings.content_width }}px);
+    padding: {{ section.settings.padding_top | times: 0.75 | round }}px 1rem {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  #{{ root }} .fq-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: {{ section.settings.gap_mobile }}px;
+  }
+
+  #{{ root }} .fq-media {
+    order: {% if section.settings.media_first_mobile %}1{% else %}2{% endif %};
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ section.settings.media_radius }}px;
+    width: 100%;
+    aspect-ratio: var(--fq-media-ratio);
+  }
+
+  #{{ root }} .fq-content {
+    order: {% if section.settings.media_first_mobile %}2{% else %}1{% endif %};
+  }
+
+  #{{ root }} .fq-media img,
+  #{{ root }} .fq-media video,
+  #{{ root }} .fq-media iframe,
+  #{{ root }} .fq-media svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+  }
+
+  #{{ root }} .fq-media svg {
+    background-color: #afafaf;
+  }
+
+  #{{ root }} .fq-caption,
+  #{{ root }} .fq-heading,
+  #{{ root }} .fq-intro {
+    text-align: {{ section.settings.text_alignment }};
+  }
+
+  #{{ root }} .fq-caption * {
+    margin: 0;
+    font-size: {{ section.settings.caption_size }}px;
+    color: var(--fq-text);
+    line-height: 150%;
+    letter-spacing: 0.06em;
+    text-transform: {{ section.settings.caption_uppercase | default: false | replace: true, 'uppercase' | replace: false, 'none' }};
+  }
+
+  #{{ root }} .fq-heading * ,
+  #{{ root }} .fq-heading {
+    margin: 12px 0 0;
+    font-size: {{ section.settings.heading_size | times: 0.75 | round }}px;
+    color: var(--fq-heading);
+    line-height: 125%;
+    font-weight: 700;
+    text-transform: unset;
+    word-break: break-word;
+  }
+
+  #{{ root }} .fq-intro {
+    margin-top: 16px;
+  }
+
+  #{{ root }} .fq-intro * {
+    margin: 0;
+    font-size: {{ section.settings.body_size }}px;
+    color: var(--fq-text);
+    line-height: 155%;
+    word-break: break-word;
+  }
+
+  #{{ root }} .fq-intro a {
+    color: inherit;
+    text-underline-offset: 2px;
+  }
+
+  #{{ root }} .fq-list {
+    margin-top: 24px;
+  }
+
+  #{{ root }} .fq-item {
+    border-bottom: 1px solid var(--fq-divider);
+  }
+
+  #{{ root }} .fq-item > summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  #{{ root }} .fq-item > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #{{ root }} .fq-item > summary:focus-visible {
+    outline: 2px solid var(--fq-heading);
+    outline-offset: 2px;
+  }
+
+  #{{ root }} .fq-question {
+    margin: 0;
+    font-size: {{ section.settings.question_size | minus: 1 }}px;
+    color: var(--fq-heading);
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: unset;
+  }
+
+  #{{ root }} .fq-sign {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 26px;
+    height: 26px;
+    transition: transform 0.25s ease;
+  }
+
+  #{{ root }} .fq-item[open] .fq-sign {
+    transform: rotate(45deg);
+  }
+
+  #{{ root }} .fq-sign svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #{{ root }} .fq-sign svg path {
+    stroke: var(--fq-heading);
+  }
+
+  #{{ root }} .fq-answer-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.28s ease;
+  }
+
+  #{{ root }} .fq-item[open] .fq-answer-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  #{{ root }} .fq-answer {
+    overflow: hidden;
+  }
+
+  #{{ root }} .fq-answer-inner {
+    padding-bottom: 16px;
+  }
+
+  #{{ root }} .fq-answer-inner * {
+    margin: 0 0 10px;
+    font-size: {{ section.settings.body_size }}px;
+    color: var(--fq-text);
+    line-height: 155%;
+    word-break: break-word;
+  }
+
+  #{{ root }} .fq-answer-inner *:last-child {
+    margin-bottom: 0;
+  }
+
+  #{{ root }} .fq-features {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.feature_columns_mobile }}, 1fr);
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  #{{ root }} .fq-feature {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--fq-card-border);
+    border-radius: {{ section.settings.feature_radius }}px;
+    background-color: var(--fq-card-bg);
+  }
+
+  #{{ root }} .fq-feature-icon {
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #{{ root }} .fq-feature-icon img,
+  #{{ root }} .fq-feature-icon svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  #{{ root }} .fq-feature-icon svg path,
+  #{{ root }} .fq-feature-icon svg circle {
+    fill: var(--fq-icon);
+  }
+
+  #{{ root }} .fq-feature-icon svg.fq-stroke path,
+  #{{ root }} .fq-feature-icon svg.fq-stroke polyline,
+  #{{ root }} .fq-feature-icon svg.fq-stroke circle {
+    fill: none;
+    stroke: var(--fq-icon);
+  }
+
+  #{{ root }} .fq-feature-title {
+    margin: 0;
+    font-size: {{ section.settings.feature_title_size }}px;
+    color: var(--fq-heading);
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: unset;
+  }
+
+  #{{ root }} .fq-feature-text * {
+    margin: 0;
+    font-size: {{ section.settings.feature_text_size }}px;
+    color: var(--fq-text);
+    line-height: 150%;
+    word-break: break-word;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #{{ root }} .fq-answer-wrap,
+    #{{ root }} .fq-sign {
+      transition: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #{{ root }} {
+      --fq-media-ratio: {{ section.settings.media_ratio_desktop }};
+    }
+
+    #{{ root }} .fq-inner {
+      padding: {{ section.settings.padding_top }}px 5rem {{ section.settings.padding_bottom }}px;
+    }
+
+    #{{ root }} .fq-body {
+      grid-template-columns: {{ section.settings.column_split }};
+      gap: {{ section.settings.gap_desktop }}px;
+    }
+
+    #{{ root }} .fq-media {
+      order: {% if section.settings.media_position == 'left' %}1{% else %}2{% endif %};
+    }
+
+    #{{ root }} .fq-content {
+      order: {% if section.settings.media_position == 'left' %}2{% else %}1{% endif %};
+    }
+
+    #{{ root }} .fq-heading *,
+    #{{ root }} .fq-heading {
+      font-size: {{ section.settings.heading_size }}px;
+    }
+
+    #{{ root }} .fq-question {
+      font-size: {{ section.settings.question_size }}px;
+    }
+
+    #{{ root }} .fq-list {
+      margin-top: 32px;
+    }
+
+    #{{ root }} .fq-features {
+      grid-template-columns: repeat({{ section.settings.feature_columns_desktop }}, 1fr);
+      margin-top: 32px;
+    }
+
+    #{{ root }} .fq-feature-icon img,
+    #{{ root }} .fq-feature-icon svg {
+      width: {{ section.settings.feature_icon_size }}px;
+      height: {{ section.settings.feature_icon_size }}px;
+    }
+  }
+</style>
+
+<div id="{{ root }}" class="fq-section">
+  <div class="fq-inner">
+    <div class="fq-body">
+      <div class="fq-media">
+        {%- if section.settings.video != blank -%}
+          {{ section.settings.video | video_tag: image_size: '1200x', controls: true, playsinline: true, preload: 'metadata' }}
+        {%- elsif section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1500
+            | image_tag:
+              loading: 'lazy',
+              widths: '360, 535, 750, 1070, 1500',
+              sizes: '(min-width: 1024px) 45vw, 92vw',
+              alt: section.settings.image.alt | default: section.settings.heading | strip_html
+          }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+
+      <div class="fq-content">
+        {%- if section.settings.caption != blank -%}
+          <div class="fq-caption">{{ section.settings.caption }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <div class="fq-heading">
+            <{{ section.settings.heading_tag }}>{{ section.settings.heading }}</{{ section.settings.heading_tag }}>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.intro != blank -%}
+          <div class="fq-intro">{{ section.settings.intro }}</div>
+        {%- endif -%}
+
+        {%- if faq_blocks.size > 0 -%}
+          <div class="fq-list" {% if section.settings.exclusive %}data-fq-exclusive{% endif %}>
+            {%- for block in faq_blocks -%}
+              <details
+                class="fq-item"
+                {% if section.settings.exclusive %}name="fq-{{ uid }}"{% endif %}
+                {% if block.settings.open_by_default %}open{% endif %}
+                {{ block.shopify_attributes }}
+              >
+                <summary>
+                  <p class="fq-question">{{ block.settings.question | escape }}</p>
+                  <span class="fq-sign" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M6 12h6m6 0h-6m0 0V6m0 6v6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </summary>
+                <div class="fq-answer-wrap">
+                  <div class="fq-answer">
+                    <div class="fq-answer-inner">{{ block.settings.answer }}</div>
+                  </div>
+                </div>
+              </details>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if feature_blocks.size > 0 -%}
+          <div class="fq-features">
+            {%- for block in feature_blocks -%}
+              <div class="fq-feature" {{ block.shopify_attributes }}>
+                <div class="fq-feature-icon">
+                  {%- if block.settings.custom_icon != blank -%}
+                    {{ block.settings.custom_icon | image_url: width: 96 | image_tag: loading: 'lazy', alt: block.settings.title }}
+                  {%- else -%}
+                    {%- case block.settings.icon -%}
+                      {%- when 'shield' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" aria-hidden="true">
+                          <path d="M14.783,2.813l-5.25-1.68c-.349-.112-.718-.111-1.066,0L3.216,2.813c-.728,.233-1.216,.903-1.216,1.667v6.52c0,3.508,4.946,5.379,6.46,5.869,.177,.057,.358,.086,.54,.086s.362-.028,.538-.085c1.516-.49,6.462-2.361,6.462-5.869V4.48c0-.764-.489-1.434-1.217-1.667Zm-2.681,4.389l-3.397,4.5c-.128,.169-.322,.276-.534,.295-.021,.002-.043,.003-.065,.003-.189,0-.372-.071-.511-.201l-1.609-1.5c-.303-.283-.32-.757-.038-1.06,.284-.303,.758-.319,1.06-.038l1.001,.933,2.896-3.836c.25-.33,.72-.396,1.051-.146,.331,.25,.396,.72,.146,1.051Z"/>
+                        </svg>
+                      {%- when 'card' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" aria-hidden="true">
+                          <path d="M17,5.75c0-1.517-1.233-2.75-2.75-2.75H3.75c-1.517,0-2.75,1.233-2.75,2.75v.75H17v-.75Z"/>
+                          <path d="M1,12.25c0,1.517,1.233,2.75,2.75,2.75H14.25c1.517,0,2.75-1.233,2.75-2.75v-4.25H1v4.25Zm11.75-1.75h1c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75h-1c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75Zm-8.5,0h3c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75h-3c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75Z"/>
+                        </svg>
+                      {%- when 'refresh' -%}
+                        <svg class="fq-stroke" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" aria-hidden="true">
+                          <polyline points="8.5 12.75 10.75 15 8.5 17.25" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                          <path d="M4.952,4.238c-1.347,1.146-2.202,2.855-2.202,4.762,0,3.452,2.798,6.25,6.25,6.25,.579,0,1.14-.079,1.672-.226" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                          <polyline points="9.5 5.25 7.25 3 9.5 .75" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                          <path d="M13.048,13.762c1.347-1.146,2.202-2.855,2.202-4.762,0-3.452-2.798-6.25-6.25-6.25-.597,0-1.175,.084-1.722,.24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                        </svg>
+                      {%- when 'truck' -%}
+                        <svg class="fq-stroke" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M1 3.5h13v13H1z" stroke-width="1.8" stroke-linejoin="round"/>
+                          <path d="M14 8h4l3 3v5.5h-7z" stroke-width="1.8" stroke-linejoin="round"/>
+                          <circle cx="5.5" cy="18.5" r="2.5" stroke-width="1.8"/>
+                          <circle cx="17.5" cy="18.5" r="2.5" stroke-width="1.8"/>
+                        </svg>
+                      {%- when 'heart' -%}
+                        <svg class="fq-stroke" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="1.8" stroke-linejoin="round"/>
+                        </svg>
+                      {%- when 'gift' -%}
+                        <svg class="fq-stroke" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" stroke-width="1.8" stroke-linejoin="round"/>
+                        </svg>
+                      {%- when 'lock' -%}
+                        <svg class="fq-stroke" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                          <rect x="3" y="11" width="18" height="11" rx="2" stroke-width="1.8"/>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke-width="1.8" stroke-linecap="round"/>
+                        </svg>
+                      {%- when 'sparkle' -%}
+                        <svg class="fq-stroke" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4L12 3z" stroke-width="1.8" stroke-linejoin="round"/>
+                        </svg>
+                    {%- endcase -%}
+                  {%- endif -%}
+                </div>
+                <div class="fq-feature-content">
+                  {%- if block.settings.title != blank -%}
+                    <p class="fq-feature-title">{{ block.settings.title | escape }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.text != blank -%}
+                    <div class="fq-feature-text">{{ block.settings.text }}</div>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- if faq_blocks.size > 0 and section.settings.faq_schema -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in faq_blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | strip_html | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ block.settings.answer | strip_html | strip_newlines | json }}
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{%- if section.settings.exclusive -%}
+  <script>
+    (function () {
+      // Fallback for browsers without support for the details `name` attribute.
+      var supportsName = 'name' in document.createElement('details');
+      if (supportsName) return;
+
+      var root = document.getElementById('fq-' + {{ section.id | json }});
+      if (!root) return;
+      var list = root.querySelector('[data-fq-exclusive]');
+      if (!list) return;
+
+      list.addEventListener('toggle', function (e) {
+        var item = e.target;
+        if (!item.open || !item.classList.contains('fq-item')) return;
+        list.querySelectorAll('.fq-item[open]').forEach(function (other) {
+          if (other !== item) other.open = false;
+        });
+      }, true);
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ with image",
+  "tag": "section",
+  "class": "section section-faq-image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video",
+      "info": "Takes priority over the image."
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Media position (desktop)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "checkbox",
+      "id": "media_first_mobile",
+      "label": "Media above text on mobile",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "media_ratio_desktop",
+      "label": "Media ratio (desktop)",
+      "options": [
+        { "value": "1/1", "label": "Square" },
+        { "value": "4/3", "label": "Landscape 4:3" },
+        { "value": "3/2", "label": "Landscape 3:2" },
+        { "value": "16/9", "label": "Landscape 16:9" },
+        { "value": "4/5", "label": "Portrait 4:5" }
+      ],
+      "default": "4/3"
+    },
+    {
+      "type": "select",
+      "id": "media_ratio_mobile",
+      "label": "Media ratio (mobile)",
+      "options": [
+        { "value": "1/1", "label": "Square" },
+        { "value": "4/3", "label": "Landscape 4:3" },
+        { "value": "3/2", "label": "Landscape 3:2" },
+        { "value": "16/9", "label": "Landscape 16:9" },
+        { "value": "4/5", "label": "Portrait 4:5" }
+      ],
+      "default": "4/3"
+    },
+    {
+      "type": "range",
+      "id": "media_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Media corner radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "caption",
+      "label": "Caption",
+      "default": "FAQ"
+    },
+    {
+      "type": "checkbox",
+      "id": "caption_uppercase",
+      "label": "Uppercase caption",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "caption_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Caption size",
+      "default": 12
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Guarantees"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag",
+      "options": [
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "p", "label": "Paragraph" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (desktop)",
+      "default": 48
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro text",
+      "default": "<p>We stand behind every Eveline Jewelry piece. Enjoy 30 day returns, a lifetime craftsmanship warranty, and easy repairs. For questions or to start a return, email us anytime at info@evelinejewelry.com</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Body text size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Questions"
+    },
+    {
+      "type": "checkbox",
+      "id": "exclusive",
+      "label": "Only one question open at a time",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "faq_schema",
+      "label": "Add FAQ structured data",
+      "info": "Helps Google show these questions in search results. Only enable on one section per page.",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "question_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Question size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Feature badges"
+    },
+    {
+      "type": "range",
+      "id": "feature_columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Columns (desktop)",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "feature_columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columns (mobile)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "feature_icon_size",
+      "min": 20,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size (desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "feature_title_size",
+      "min": 11,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge title size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "feature_text_size",
+      "min": 9,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge text size",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "feature_radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge corner radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#f6f5f2"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings and questions",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Question divider",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "feature_bg",
+      "label": "Badge background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "feature_border",
+      "label": "Badge border",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "feature_icon_color",
+      "label": "Badge icons",
+      "default": "#4f7857"
+    },
+    {
+      "type": "header",
+      "content": "Layout and spacing"
+    },
+    {
+      "type": "select",
+      "id": "column_split",
+      "label": "Column split (desktop)",
+      "options": [
+        { "value": "1fr 1fr", "label": "Even" },
+        { "value": "1.2fr 1fr", "label": "Wider text" },
+        { "value": "1fr 1.2fr", "label": "Wider media" }
+      ],
+      "default": "1fr 1fr"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 900,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "label": "Content width fallback",
+      "info": "Used when the theme does not define a page width.",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "min": 20,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Column gap (desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Row gap (mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top (desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom (desktop)",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "section_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Section corner radius",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 6,
+      "step": 1,
+      "unit": "px",
+      "label": "Section border width",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Section border",
+      "default": "#121212"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What if I would like to return my order?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Write the answer here.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "shield", "label": "Shield check" },
+            { "value": "card", "label": "Credit card" },
+            { "value": "refresh", "label": "Returns" },
+            { "value": "truck", "label": "Delivery" },
+            { "value": "lock", "label": "Lock" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "gift", "label": "Gift" },
+            { "value": "sparkle", "label": "Sparkle" }
+          ],
+          "default": "shield"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom icon",
+          "info": "Optional. Replaces the icon above."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Lifetime Warranty"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>On every piece we make.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "FAQ with image",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What if I would like to return my order?",
+            "answer": "<p>We want you to love your Eveline Jewelry piece just as much as we loved making it. If it is not quite right, you are welcome to request a return or exchange within 30 days of receiving your order.</p><p>All we ask is that the piece comes back to us in acceptable condition and in its original packaging. Email info@evelinejewelry.com with your order details, and we will take care of the rest.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Will my jewelry fade or tarnish?",
+            "answer": "<p>Your jewelry is made to last. Our materials are chosen for durability and everyday wear, and the finish is designed to hold up over time. Like anything well made, it will develop character with use, but it should not discolor under normal conditions. With a little care, it will stay beautiful for years.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is shipping really free?",
+            "answer": "<p>Yes. For all orders within the USA, we provide free FedEx Express shipping. There is no paid priority option because it is not needed — every customer receives the same fast, careful service.</p><p>We pack each Eveline Jewelry piece by hand and ship it as soon as your order comes in. Once your package is on its way, you will receive a tracking number by email.</p><p>Delivery times vary slightly depending on where you live, but our promise is simple: we ship quickly, and you never pay for shipping.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Are all your products handmade?",
+            "answer": "<p>Every design is created by Eveline Jewelry. Each piece begins as a sketch at our workbench, is brought to life by hand in our studio, and is inspected by one of us before it is sent to you.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What if my piece breaks or needs repair?",
+            "answer": "<p>Life happens. If your piece needs attention, email info@evelinejewelry.com with your order number and a clear photo of the issue. Within the first 6 months, we will repair or replace pieces that show a problem with materials or craftsmanship whenever possible.</p><p>For accidents or well loved wear after that, we are still happy to review repair options or offer a discount toward a replacement.</p>"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "shield",
+            "title": "Lifetime Warranty",
+            "text": "<p>On every piece we make.</p>"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "card",
+            "title": "Safe Payments",
+            "text": "<p>Encrypted and safe every time you shop.</p>"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "refresh",
+            "title": "30-Day Returns",
+            "text": "<p>Full refund, no questions asked.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
