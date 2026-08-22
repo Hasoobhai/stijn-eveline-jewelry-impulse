@@ -381,6 +381,50 @@
         "related_count": 5,
         "products_per_row": 5
       }
+    },
+    "text_with_icons_hGw3pL": {
+      "type": "text-with-icons",
+      "blocks": {
+        "text_block_xbaGNt": {
+          "type": "text_block",
+          "settings": {
+            "icon": "truck",
+            "title": "FREE STANDARD SHIPPING",
+            "text": "<p>We include free standard shipping on every order.</p>"
+          }
+        },
+        "text_block_dBCn9p": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "title": "Example title",
+            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products.</p>"
+          }
+        },
+        "text_block_CdxRUi": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "title": "Example title",
+            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_xbaGNt",
+        "text_block_dBCn9p",
+        "text_block_CdxRUi"
+      ],
+      "name": "t:common.text_with_icons.presets.text_with_icons.name",
+      "settings": {
+        "title": "",
+        "align_text": "center",
+        "desktop_columns_per_row": 3,
+        "icon_color": "#000",
+        "button_label": "",
+        "button_link": "",
+        "divider": false
+      }
     }
   },
   "order": [
@@ -392,6 +436,7 @@
     "recently-viewed",
     "collection-return",
     "u_return_products_dtEeB3",
-    "product-recommendations"
+    "product-recommendations",
+    "text_with_icons_hGw3pL"
   ]
 }
