@@ -30,11 +30,12 @@
             "container_width": 33
           }
         },
-        "menu_9hbBqT": {
-          "type": "menu",
+        "newsletter_r47rxK": {
+          "type": "newsletter",
           "settings": {
             "show_footer_title": true,
-            "menu": "haseeb-menu",
+            "title": "Sign up and save",
+            "text": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>",
             "container_width": 33
           }
         },
@@ -49,7 +50,7 @@
       },
       "block_order": [
         "custom_krMFky",
-        "menu_9hbBqT",
+        "newsletter_r47rxK",
         "menu_UdkmPA"
       ],
       "custom_css": [],
