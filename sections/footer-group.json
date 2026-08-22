@@ -20,6 +20,19 @@
     },
     "footer": {
       "type": "footer",
+      "blocks": {
+        "menu_9hbBqT": {
+          "type": "menu",
+          "settings": {
+            "show_footer_title": false,
+            "menu": "haseeb-menu",
+            "container_width": 25
+          }
+        }
+      },
+      "block_order": [
+        "menu_9hbBqT"
+      ],
       "custom_css": [],
       "settings": {
         "show_locale_selector": false,
