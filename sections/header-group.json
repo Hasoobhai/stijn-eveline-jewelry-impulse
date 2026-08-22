@@ -17,8 +17,8 @@
         "announcement-0": {
           "type": "announcement",
           "settings": {
-            "text": "Livraison gratuite en France",
-            "link_text": "",
+            "text": "LAST SALE:",
+            "link_text": "Up to 80% off",
             "link": ""
           }
         }
