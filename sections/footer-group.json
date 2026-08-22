@@ -21,6 +21,15 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "custom_krMFky": {
+          "type": "custom",
+          "settings": {
+            "show_footer_title": true,
+            "title": "Custom text",
+            "text": "<p>Add your own custom text here.</p>",
+            "container_width": 25
+          }
+        },
         "menu_9hbBqT": {
           "type": "menu",
           "settings": {
@@ -28,10 +37,20 @@
             "menu": "haseeb-menu",
             "container_width": 25
           }
+        },
+        "menu_UdkmPA": {
+          "type": "menu",
+          "settings": {
+            "show_footer_title": false,
+            "menu": "footer-policies",
+            "container_width": 25
+          }
         }
       },
       "block_order": [
-        "menu_9hbBqT"
+        "custom_krMFky",
+        "menu_9hbBqT",
+        "menu_UdkmPA"
       ],
       "custom_css": [],
       "settings": {
