@@ -27,6 +27,7 @@
             "color_accent": "rgba(0,0,0,0)",
             "text_align": "vertical-center horizontal-center",
             "image": "shopify://shop_images/ChatGPT_Image_Aug_22_2026_04_00_01_PM.png",
+            "image_mobile": "shopify://shop_images/ChatGPT_Image_Aug_24_2026_10_17_41_AM.png",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -93,8 +94,8 @@
         "column_gap": 10,
         "padding_top": 10,
         "padding_bottom": 14,
-        "bg_color": "#FDEAEA",
-        "icon_color": "#DF8096",
+        "bg_color": "#fdeaea",
+        "icon_color": "#df8096",
         "text_color": "#321004",
         "star_color": "#db9d46",
         "accent_color": "#06a26e",
